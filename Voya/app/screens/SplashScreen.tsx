@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   },
   brandRest: {
     color: "#000000",
+    fontFamily: "Poppins_600SemiBold",
   },
   tagline: {
     marginTop: 8,

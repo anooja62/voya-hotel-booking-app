@@ -1,4 +1,3 @@
-// screens/Onboarding1.tsx
 import React from "react";
 import {
   View,
@@ -20,14 +19,12 @@ export default function Onboarding2() {
 
   return (
     <View style={styles.container}>
-      {/* Image slices */}
       <View style={styles.imageRow}>
         {slices.map((src, i) => (
           <Image key={i} source={src} style={styles.slice} resizeMode="cover" />
         ))}
       </View>
 
-      {/* Text content */}
       <View style={styles.textBlock}>
         <Text style={styles.title}>
           Book Your Dream Hotel in Just a Tap{"\n"}Just a Tap
@@ -38,20 +35,17 @@ export default function Onboarding2() {
         </Text>
       </View>
 
-      {/* Bottom controls */}
       <View style={styles.bottomRow}>
         <TouchableOpacity>
           <Text style={styles.skip}>Skip</Text>
         </TouchableOpacity>
 
-        {/* Pagination dots */}
         <View style={styles.dots}>
           <View style={[styles.dot, styles.dotActive]} />
           <View style={styles.dot} />
           <View style={styles.dot} />
         </View>
 
-        {/* Next button */}
         <TouchableOpacity style={styles.nextBtn}>
           <Text style={styles.nextArrow}>→</Text>
         </TouchableOpacity>

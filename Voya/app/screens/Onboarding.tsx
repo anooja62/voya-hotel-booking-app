@@ -1,4 +1,3 @@
-// screens/Onboarding1.tsx
 import React, { useRef, useState, useEffect } from "react";
 import {
   View,
@@ -59,7 +58,7 @@ export default function OnboardingCarousel() {
   >;
 
   const navigation = useNavigation<OnboardingNavProp>();
-  // Auto advance every 2s
+
   useEffect(() => {
     const timer = setInterval(() => {
       const next = index === slides.length - 1 ? slides.length - 1 : index + 1;
@@ -92,14 +91,12 @@ export default function OnboardingCarousel() {
         flex: 1,
       }}
     >
-      {/* Image slices: 50% of screen height */}
       <View style={[styles.imageRow, { height: height * 0.5 }]}>
         {item.images.map((src, i) => (
           <Image key={i} source={src} style={styles.slice} resizeMode="cover" />
         ))}
       </View>
 
-      {/* Text: remaining 50% */}
       <View
         style={[
           styles.textBlock,
@@ -127,7 +124,6 @@ export default function OnboardingCarousel() {
         onMomentumScrollEnd={handleMomentumEnd}
       />
 
-      {/* Bottom Controls */}
       <View style={styles.bottomRow}>
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <CustomText style={styles.skip}>Skip</CustomText>
@@ -150,7 +146,7 @@ export default function OnboardingCarousel() {
   );
 }
 const SLICE_WIDTH = width * 0.25;
-const SLICE_HEIGHT = height * 0.5 * 0.9; // 90% of 50% screen height
+const SLICE_HEIGHT = height * 0.5 * 0.9;
 
 const styles = StyleSheet.create({
   container: {
