@@ -2,13 +2,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   Dimensions,
   FlatList,
   TouchableOpacity,
 } from "react-native";
+import { CustomText } from "../components/custom/CustomText";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
@@ -44,9 +44,9 @@ const slides = [
     description:
       "Sit back and enjoy your journey — we take care of everything so you can focus on making memories.",
     images: [
-      require("../../assets/images/onboarding/stay3.png"),
-      require("../../assets/images/onboarding/stay1.png"),
-      require("../../assets/images/onboarding/stay2.png"),
+      require("../../assets/images/onboarding/stay7.png"),
+      require("../../assets/images/onboarding/stay8.png"),
+      require("../../assets/images/onboarding/stay9.png"),
     ],
   },
 ];
@@ -108,8 +108,8 @@ export default function OnboardingCarousel() {
           },
         ]}
       >
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.description}>{item.description}</Text>
+        <CustomText style={styles.title}>{item.title}</CustomText>
+        <CustomText style={styles.description}>{item.description}</CustomText>
       </View>
     </View>
   );
@@ -130,7 +130,7 @@ export default function OnboardingCarousel() {
       {/* Bottom Controls */}
       <View style={styles.bottomRow}>
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-          <Text style={styles.skip}>Skip</Text>
+          <CustomText style={styles.skip}>Skip</CustomText>
         </TouchableOpacity>
 
         <View style={styles.dots}>
@@ -143,7 +143,7 @@ export default function OnboardingCarousel() {
         </View>
 
         <TouchableOpacity style={styles.nextBtn} onPress={handleNext}>
-          <Text style={styles.nextArrow}>→</Text>
+          <CustomText style={styles.nextArrow}>→</CustomText>
         </TouchableOpacity>
       </View>
     </View>

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
-
+import { CustomText } from "../components/custom/CustomText";
 type SplashNavProp = NativeStackNavigationProp<RootStackParamList, "Splash">;
 
 export default function SplashScreen() {
@@ -19,11 +19,11 @@ export default function SplashScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.brand}>
-        <Text style={styles.brandV}>V</Text>
-        <Text style={styles.brandRest}>oya</Text>
-      </Text>
-      <Text style={styles.tagline}>Check-in to comfort</Text>
+      <CustomText style={styles.brand}>
+        <CustomText style={styles.brandV}>V</CustomText>
+        <CustomText style={styles.brandRest}>oya</CustomText>
+      </CustomText>
+      <CustomText style={styles.tagline}>Check-in to comfort</CustomText>
     </View>
   );
 }
