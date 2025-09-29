@@ -10,76 +10,80 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { RootStackParamList } from "../navigation/StackNavigator";
+import PrimaryButton from "../components/custom/PrimaryButton";
 
 type DetailsRouteProp = RouteProp<RootStackParamList, "Details">;
 
 const Details = () => {
   const navigation = useNavigation();
   const route = useRoute<DetailsRouteProp>();
-  const { hotel } = route.params; // 👈 fetch hotel data from navigation
+  const { hotel } = route.params;
 
   return (
-    <ScrollView style={styles.container}>
-      {/* Hotel Image */}
-      <View style={styles.imageContainer}>
-        <Image source={hotel.image} style={styles.image} />
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Ionicons name="chevron-back" size={22} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Details</Text>
-      </View>
-
-      {/* Hotel Info */}
-      <View style={styles.content}>
-        <View style={styles.titleRow}>
-          <Text style={styles.hotelName}>{hotel.name}</Text>
-          <Ionicons name="heart-outline" size={22} color="#4F6DFF" />
-        </View>
-        <Text style={styles.location}>{hotel.location}</Text>
-        <View style={styles.ratingRow}>
-          <Ionicons name="star" size={16} color="#FFD700" />
-          <Text style={styles.rating}>{hotel.rating}</Text>
-          <Text style={styles.reviews}>(1,092 Reviews)</Text>
+    <View style={styles.container}>
+      {/* Scrollable Content */}
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Hotel Image */}
+        <View style={styles.imageContainer}>
+          <Image source={hotel.image} style={styles.image} />
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => navigation.goBack()}
+          >
+            <Ionicons name="chevron-back" size={22} color="#000" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Details</Text>
         </View>
 
-        {/* Facilities */}
-        <Text style={styles.sectionTitle}>Facilities</Text>
-        <View style={styles.facilitiesRow}>
-          <View style={styles.facility}>
-            <Ionicons name="wifi-outline" size={22} color="#000" />
-            <Text style={styles.facilityText}>Wi-Fi</Text>
+        {/* Hotel Info */}
+        <View style={styles.content}>
+          <View style={styles.titleRow}>
+            <Text style={styles.hotelName}>{hotel.name}</Text>
+            <Ionicons name="heart-outline" size={22} color="#4F6DFF" />
           </View>
-          <View style={styles.facility}>
-            <Ionicons name="restaurant-outline" size={22} color="#000" />
-            <Text style={styles.facilityText}>Restaurant</Text>
+          <Text style={styles.location}>{hotel.location}</Text>
+          <View style={styles.ratingRow}>
+            <Ionicons name="star" size={16} color="#FFD700" />
+            <Text style={styles.rating}>{hotel.rating}</Text>
+            <Text style={styles.reviews}>(1,092 Reviews)</Text>
           </View>
-          <View style={styles.facility}>
-            <Ionicons name="cafe-outline" size={22} color="#000" />
-            <Text style={styles.facilityText}>Cafe</Text>
+
+          {/* Facilities */}
+          <Text style={styles.sectionTitle}>Facilities</Text>
+          <View style={styles.facilitiesRow}>
+            <View style={styles.facility}>
+              <Ionicons name="wifi-outline" size={22} color="#000" />
+              <Text style={styles.facilityText}>Wi-Fi</Text>
+            </View>
+            <View style={styles.facility}>
+              <Ionicons name="restaurant-outline" size={22} color="#000" />
+              <Text style={styles.facilityText}>Restaurant</Text>
+            </View>
+            <View style={styles.facility}>
+              <Ionicons name="cafe-outline" size={22} color="#000" />
+              <Text style={styles.facilityText}>Cafe</Text>
+            </View>
+            <View style={styles.facility}>
+              <Ionicons name="leaf-outline" size={22} color="#000" />
+              <Text style={styles.facilityText}>Garden</Text>
+            </View>
+            <View style={styles.facility}>
+              <Ionicons name="barbell-outline" size={22} color="#000" />
+              <Text style={styles.facilityText}>Gym</Text>
+            </View>
           </View>
-          <View style={styles.facility}>
-            <Ionicons name="leaf-outline" size={22} color="#000" />
-            <Text style={styles.facilityText}>Garden</Text>
-          </View>
-          <View style={styles.facility}>
-            <Ionicons name="barbell-outline" size={22} color="#000" />
-            <Text style={styles.facilityText}>Gym</Text>
-          </View>
+
+          {/* Description */}
+          <Text style={styles.sectionTitle}>Description</Text>
+          <Text style={styles.description}>
+            Lorem ipsum dolor sit amet consectetur. Lectus dictum ut nunc
+            sodales a. Nibh tortor malesuada amet malesuada{" "}
+            <Text style={styles.readMore}>Read More</Text>
+          </Text>
         </View>
+      </ScrollView>
 
-        {/* Description */}
-        <Text style={styles.sectionTitle}>Description</Text>
-        <Text style={styles.description}>
-          Lorem ipsum dolor sit amet consectetur. Lectus dictum ut nunc sodales
-          a. Nibh tortor malesuada amet malesuada{" "}
-          <Text style={styles.readMore}>Read More</Text>
-        </Text>
-      </View>
-
-      {/* Bottom Section */}
+      {/* Fixed Footer */}
       <View style={styles.footer}>
         <View>
           <Text style={styles.priceLabel}>Price</Text>
@@ -87,26 +91,26 @@ const Details = () => {
             $1,500 <Text style={styles.night}>/ Night</Text>
           </Text>
         </View>
-        <TouchableOpacity style={styles.bookButton}>
-          <Text style={styles.bookText}>Book Now</Text>
-        </TouchableOpacity>
+        <PrimaryButton
+          title="Book Now"
+          onPress={() => {}}
+          style={{ width: "60%" }}
+        />
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
 export default Details;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
-
+  container: { flex: 1, backgroundColor: "#F9F9F9" },
+  scrollContent: { paddingBottom: 100 },
   // Image
   imageContainer: { position: "relative" },
   image: {
     width: "100%",
-    height: 200,
-    borderBottomLeftRadius: 16,
-    borderBottomRightRadius: 16,
+    height: 400,
   },
   backButton: {
     position: "absolute",
@@ -163,9 +167,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 16,
-    borderTopWidth: 1,
-    borderTopColor: "#eee",
+    paddingHorizontal: 16,
+    paddingVertical: 30,
+    backgroundColor: "#fff",
   },
   priceLabel: { fontSize: 12, color: "#888" },
   price: { fontSize: 20, fontWeight: "700", color: "#000" },

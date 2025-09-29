@@ -26,7 +26,12 @@ export default function HomeScreen() {
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
           <Text style={styles.logo}>
-            <Text style={{ color: "#4F6DFF" }}>V</Text>oya
+            <Text
+              style={{ color: "#4F6DFF", fontFamily: "Poppins_400Regular" }}
+            >
+              V
+            </Text>
+            oya
           </Text>
           <Text style={styles.title}>
             Your Perfect Stay is Just a {"\n"}Click Away!
@@ -79,12 +84,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-between", // pushes login text to bottom
     //alignItems: "center",
   },
-  logo: { fontSize: 55, fontWeight: "bold", marginBottom: 20 },
+  logo: {
+    fontSize: 55,
+    fontWeight: "bold",
+    marginBottom: 20,
+    fontFamily: "Poppins_400Regular",
+  },
   title: {
     fontSize: 22,
     fontWeight: "600",
     textAlign: "center",
     marginBottom: 8,
+    fontFamily: "Poppins_400Regular",
   },
   subtitle: {
     fontSize: 15,
