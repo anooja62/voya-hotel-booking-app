@@ -1,8 +1,12 @@
 // screens/HomeScreen.tsx
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../navigation/StackNavigator";
 export default function HomeScreen() {
+  type HomeNavProp = NativeStackNavigationProp<RootStackParamList, "Home">;
+  const navigation = useNavigation<HomeNavProp>();
   return (
     <View style={styles.container}>
       {/* Top Half - Image with overlay */}
@@ -27,12 +31,21 @@ export default function HomeScreen() {
           a.
         </Text>
 
-        <TouchableOpacity style={styles.registerButton}>
+        <TouchableOpacity
+          style={styles.registerButton}
+          onPress={() => navigation.navigate("Signup")}
+        >
           <Text style={styles.registerText}>Register</Text>
         </TouchableOpacity>
 
         <Text style={styles.loginText}>
-          Already have an account? <Text style={styles.loginLink}>Log In</Text>
+          Already have an account?{" "}
+          <Text
+            style={styles.loginLink}
+            onPress={() => navigation.navigate("Login")}
+          >
+            Log In
+          </Text>
         </Text>
       </View>
     </View>

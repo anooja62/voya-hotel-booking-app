@@ -4,10 +4,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import OnboardingCarousel from "../screens/Onboarding";
 import SplashScreen from "../screens/SplashScreen";
 import HomeScreen from "../screens/HomeScreen";
+import SignUp from "../screens/SignUp";
+import Login from "../screens/Login";
 export type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
   Onboarding: undefined;
+  Signup: undefined;
+  Login: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -22,6 +26,9 @@ export default function StackNavigator() {
       <Stack.Screen name="Onboarding" component={OnboardingCarousel} />
 
       <Stack.Screen name="Home" component={HomeScreen} />
+
+      <Stack.Screen name="Signup" component={SignUp} />
+      <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );
 }
