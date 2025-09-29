@@ -1,4 +1,3 @@
-// screens/Details.tsx
 import React from "react";
 import {
   View,
@@ -9,17 +8,25 @@ import {
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
+import type { RootStackParamList } from "../navigation/StackNavigator";
+
+type DetailsRouteProp = RouteProp<RootStackParamList, "Details">;
 
 const Details = () => {
+  const navigation = useNavigation();
+  const route = useRoute<DetailsRouteProp>();
+  const { hotel } = route.params; // 👈 fetch hotel data from navigation
+
   return (
     <ScrollView style={styles.container}>
       {/* Hotel Image */}
       <View style={styles.imageContainer}>
-        <Image
-          source={require("../../assets/images/details/hotel1.jpg")}
-          style={styles.image}
-        />
-        <TouchableOpacity style={styles.backButton}>
+        <Image source={hotel.image} style={styles.image} />
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
           <Ionicons name="chevron-back" size={22} color="#000" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Details</Text>
@@ -28,14 +35,14 @@ const Details = () => {
       {/* Hotel Info */}
       <View style={styles.content}>
         <View style={styles.titleRow}>
-          <Text style={styles.hotelName}>Elysium Gardens</Text>
+          <Text style={styles.hotelName}>{hotel.name}</Text>
           <Ionicons name="heart-outline" size={22} color="#4F6DFF" />
         </View>
-        <Text style={styles.location}>Paris, France</Text>
+        <Text style={styles.location}>{hotel.location}</Text>
         <View style={styles.ratingRow}>
           <Ionicons name="star" size={16} color="#FFD700" />
-          <Text style={styles.rating}>4.5</Text>
-          <Text style={styles.reviews}>(10,92 Reviews)</Text>
+          <Text style={styles.rating}>{hotel.rating}</Text>
+          <Text style={styles.reviews}>(1,092 Reviews)</Text>
         </View>
 
         {/* Facilities */}

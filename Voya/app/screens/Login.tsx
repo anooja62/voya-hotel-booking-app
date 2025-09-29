@@ -15,6 +15,8 @@ import type { RootStackParamList } from "../navigation/StackNavigator";
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   type LoginProp = NativeStackNavigationProp<RootStackParamList, "Login">;
   const navigation = useNavigation<LoginProp>();
   return (
@@ -32,18 +34,24 @@ const Login = () => {
         <View style={styles.inputContainer}>
           <Ionicons name="mail-outline" size={20} color="#999" />
           <TextInput
-            placeholder="wadewarren123@gmail.com"
+            placeholder="Enter email address"
             keyboardType="email-address"
             style={styles.input}
+            placeholderTextColor="#A2A5AD"
+            value={email}
+            onChangeText={setEmail}
           />
         </View>
 
         <View style={styles.inputContainer}>
           <Ionicons name="lock-closed-outline" size={20} color="#999" />
           <TextInput
-            placeholder="••••••••"
+            placeholder="Enter Password"
             secureTextEntry={!passwordVisible}
             style={styles.input}
+            placeholderTextColor="#A2A5AD"
+            value={password}
+            onChangeText={setPassword}
           />
           <Pressable onPress={() => setPasswordVisible(!passwordVisible)}>
             <Ionicons
@@ -69,7 +77,16 @@ const Login = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => {
+            if (email.trim() && password.trim()) {
+              navigation.navigate("Tabs");
+            } else {
+              alert("Please enter email and password");
+            }
+          }}
+        >
           <Text style={styles.loginText}>Log In</Text>
         </TouchableOpacity>
 

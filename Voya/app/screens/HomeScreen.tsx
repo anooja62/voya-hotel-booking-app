@@ -111,12 +111,13 @@ const styles = StyleSheet.create({
   loginText: {
     fontSize: 14,
     color: "#000",
+    fontWeight: "600",
     textAlign: "center",
     marginBottom: 10, // a little space from screen edge
   },
   loginLink: {
     color: "#4F6DFF",
-    fontWeight: "600",
+    fontWeight: "700",
     fontFamily: "Poppins-Regular",
   },
 });

@@ -5,12 +5,15 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
   FlatList,
   Image,
+  TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
+import PrimaryButton from "../components/custom/PrimaryButton";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../navigation/StackNavigator";
 const hotels = [
   {
     id: "1",
@@ -29,6 +32,8 @@ const hotels = [
 ];
 
 const Search = () => {
+  type SignUpProp = NativeStackNavigationProp<RootStackParamList, "Signup">;
+  const navigation = useNavigation<SignUpProp>();
   return (
     <View style={styles.container}>
       {/* Top - Location & Profile */}
@@ -50,19 +55,31 @@ const Search = () => {
       <View style={styles.searchBox}>
         {/* Location */}
         <View style={styles.inputRow}>
-          <Ionicons name="mail-outline" size={18} color="#999" />
-          <TextInput placeholder="London, England" style={styles.input} />
+          <Ionicons name="location-outline" size={18} color="#999" />
+          <TextInput
+            style={styles.input}
+            placeholder="London, England"
+            placeholderTextColor="#A2A5AD"
+          />
         </View>
 
         {/* Dates */}
         <View style={styles.row}>
           <View style={[styles.inputRow, styles.rowItem]}>
             <Ionicons name="calendar-outline" size={18} color="#999" />
-            <TextInput placeholder="20/07/25" style={styles.input} />
+            <TextInput
+              placeholder="Check-in"
+              style={styles.input}
+              placeholderTextColor="#A2A5AD"
+            />
           </View>
           <View style={[styles.inputRow, styles.rowItem]}>
             <Ionicons name="calendar-outline" size={18} color="#999" />
-            <TextInput placeholder="26/07/25" style={styles.input} />
+            <TextInput
+              placeholder="Check-out"
+              style={styles.input}
+              placeholderTextColor="#A2A5AD"
+            />
           </View>
         </View>
 
@@ -70,18 +87,24 @@ const Search = () => {
         <View style={styles.row}>
           <View style={[styles.inputRow, styles.rowItem]}>
             <Ionicons name="person-outline" size={18} color="#999" />
-            <TextInput placeholder="1 Guest" style={styles.input} />
+            <TextInput
+              placeholder="2 Guests"
+              style={styles.input}
+              placeholderTextColor="#A2A5AD"
+            />
           </View>
           <View style={[styles.inputRow, styles.rowItem]}>
             <Ionicons name="bed-outline" size={18} color="#999" />
-            <TextInput placeholder="1 Room" style={styles.input} />
+            <TextInput
+              placeholder="1 Room"
+              style={styles.input}
+              placeholderTextColor="#A2A5AD"
+            />
           </View>
         </View>
 
         {/* Button */}
-        <TouchableOpacity style={styles.searchButton}>
-          <Text style={styles.searchText}>Find Hotel</Text>
-        </TouchableOpacity>
+        <PrimaryButton title="Search" />
       </View>
 
       {/* Popular Hotels */}
@@ -90,23 +113,30 @@ const Search = () => {
         <Text style={styles.link}>View All</Text>
       </View>
 
-      <FlatList
-        data={hotels}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.hotelCard}>
-            <Image source={item.image} style={styles.hotelImage} />
-            <View style={styles.ratingBadge}>
-              <Ionicons name="star" size={14} color="#FFD700" />
-              <Text style={styles.ratingText}>{item.rating}</Text>
-            </View>
-            <Text style={styles.hotelName}>{item.name}</Text>
-            <Text style={styles.hotelLocation}>{item.location}</Text>
-          </View>
-        )}
-      />
+      <View style={{ height: 200 }}>
+        <FlatList
+          data={hotels}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{ paddingVertical: 4 }}
+          style={{ flexGrow: 0 }} // 👈 keeps height = content
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.hotelCard}
+              onPress={() => navigation.navigate("Details", { hotel: item })}
+            >
+              <Image source={item.image} style={styles.hotelImage} />
+              <View style={styles.ratingBadge}>
+                <Ionicons name="star" size={14} color="#FFD700" />
+                <Text style={styles.ratingText}>{item.rating}</Text>
+              </View>
+              <Text style={styles.hotelName}>{item.name}</Text>
+              <Text style={styles.hotelLocation}>{item.location}</Text>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     </View>
   );
 };
@@ -114,7 +144,12 @@ const Search = () => {
 export default Search;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 16 },
+  container: {
+    flex: 1,
+    backgroundColor: "#F9F9F9",
+    padding: 26,
+    paddingTop: 60,
+  },
 
   // Header
   header: {
@@ -125,8 +160,13 @@ const styles = StyleSheet.create({
   },
   headerLeft: { flexDirection: "row", alignItems: "center" },
   avatar: { width: 40, height: 40, borderRadius: 20, marginRight: 10 },
-  subText: { fontSize: 12, color: "#888" },
-  location: { fontSize: 16, fontWeight: "600" },
+  subText: {
+    fontSize: 12,
+    color: "#000000",
+    fontWeight: "500",
+    marginBottom: 6,
+  },
+  location: { fontSize: 15, fontWeight: "600" },
 
   // Search Box
   searchBox: {
@@ -137,19 +177,22 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 8,
     elevation: 3,
+    borderWidth: 1,
+    borderColor: "#EDEDED",
     marginBottom: 20,
+    height: 300,
   },
   inputRow: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#F5F7FA",
+    backgroundColor: "#F4F7FF",
     paddingHorizontal: 12,
     paddingVertical: 14,
     borderRadius: 12,
     marginBottom: 12,
     flex: 1,
   },
-  input: { flex: 1, marginLeft: 8, fontSize: 14, color: "#333" },
+  input: { flex: 1, marginLeft: 8, fontSize: 14, color: "#000" },
 
   row: { flexDirection: "row", justifyContent: "space-between" },
   rowItem: { flex: 1, marginRight: 8 },
@@ -170,16 +213,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 12,
   },
-  sectionTitle: { fontSize: 18, fontWeight: "700" },
-  link: { fontSize: 14, color: "#4F6DFF", fontWeight: "600" },
+  sectionTitle: { fontSize: 22, fontWeight: "600", color: "#181818" },
+  link: { fontSize: 16, color: "#4B75E9", fontWeight: "500" },
 
   // Hotel Cards
   hotelCard: {
     width: 160,
     marginRight: 16,
-    borderRadius: 12,
+    borderRadius: 6,
     overflow: "hidden",
-    backgroundColor: "#fff",
+
     shadowColor: "#000",
     shadowOpacity: 0.05,
     shadowRadius: 6,
@@ -198,7 +241,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   ratingText: { marginLeft: 4, fontSize: 12, fontWeight: "600" },
-  hotelName: { fontSize: 14, fontWeight: "600", marginTop: 8, marginLeft: 8 },
+  hotelName: {
+    fontSize: 14,
+    fontWeight: "600",
+    marginTop: 8,
+    marginLeft: 8,
+    marginBottom: 8,
+  },
   hotelLocation: {
     fontSize: 12,
     color: "#888",
