@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -7,17 +7,31 @@ import {
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import PrimaryButton from "../components/custom/PrimaryButton";
 import { CustomText } from "../components/custom/CustomText";
 
 type DetailsRouteProp = RouteProp<RootStackParamList, "Details">;
+type DetailsNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Details"
+>;
 
 const Details = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<DetailsNavigationProp>();
+
   const route = useRoute<DetailsRouteProp>();
   const { hotel } = route.params;
+
+  const [expanded, setExpanded] = useState(false);
+
+  // Example description (you can replace with hotel.description if you have it)
+  const description =
+    "Lorem ipsum dolor sit amet consectetur. Lectus dictum ut nunc sodales a. Nibh tortor malesuada amet malesuada. Nulla facilisi. Duis at lorem vel nisi fermentum volutpat sit amet in purus. Sed mattis dolor a sapien ultricies, non consequat magna sagittis.";
+
+  const preview = description.slice(0, 100) + "...";
 
   return (
     <View style={styles.container}>
@@ -75,10 +89,15 @@ const Details = () => {
 
           {/* Description */}
           <CustomText style={styles.sectionTitle}>Description</CustomText>
+
           <CustomText style={styles.description}>
-            Lorem ipsum dolor sit amet consectetur. Lectus dictum ut nunc
-            sodales a. Nibh tortor malesuada amet malesuada{" "}
-            <CustomText style={styles.readMore}>Read More</CustomText>
+            {expanded ? description : preview}{" "}
+            <CustomText
+              style={styles.readMore}
+              onPress={() => setExpanded(!expanded)}
+            >
+              {expanded ? "Read Less" : "Read More"}
+            </CustomText>
           </CustomText>
         </View>
       </ScrollView>
@@ -93,7 +112,7 @@ const Details = () => {
         </View>
         <PrimaryButton
           title="Book Now"
-          onPress={() => {}}
+          onPress={() => navigation.navigate("BookNow", { hotel })}
           style={{ width: "60%" }}
         />
       </View>
@@ -128,6 +147,7 @@ const styles = StyleSheet.create({
     transform: [{ translateX: -30 }],
     fontSize: 16,
     fontWeight: "600",
+    fontFamily: "Poppins_700Bold",
   },
 
   // Content
@@ -137,30 +157,68 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  hotelName: { fontSize: 20, fontWeight: "700" },
-  location: { fontSize: 14, color: "#888", marginBottom: 6 },
+  hotelName: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#181818",
+    fontFamily: " Poppins_700Bold",
+  },
+  location: {
+    fontSize: 14,
+    color: "#A2A5AD",
+    marginBottom: 6,
+    fontWeight: "500",
+    fontFamily: "Poppins_500Medium",
+  },
   ratingRow: { flexDirection: "row", alignItems: "center", marginBottom: 20 },
-  rating: { fontSize: 14, fontWeight: "600", marginLeft: 4 },
-  reviews: { fontSize: 12, color: "#888", marginLeft: 4 },
+  rating: {
+    fontSize: 14,
+    fontWeight: "600",
+    marginLeft: 4,
+    color: "#A2A5AD",
+    fontFamily: "Poppins_500Medium",
+  },
+  reviews: {
+    fontSize: 14,
+    color: "#A2A5AD",
+    marginLeft: 4,
+    fontFamily: "Poppins_500Medium",
+  },
 
   // Facilities
-  sectionTitle: { fontSize: 16, fontWeight: "700", marginBottom: 10 },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#181818",
+    fontFamily: " Poppins_700Bold",
+    marginBottom: 10,
+  },
   facilitiesRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 20,
   },
   facility: { alignItems: "center" },
-  facilityText: { fontSize: 12, marginTop: 4 },
+  facilityText: {
+    fontSize: 12,
+    marginTop: 4,
+    fontFamily: "Poppins_500Medium",
+    color: "#000000",
+  },
 
   // Description
   description: {
-    fontSize: 14,
-    color: "#555",
-    lineHeight: 20,
+    fontSize: 15,
+    color: "#A2A5AD",
+    lineHeight: 27,
     marginBottom: 20,
+    fontFamily: "Poppins_500Medium",
   },
-  readMore: { color: "#4F6DFF", fontWeight: "600" },
+  readMore: {
+    color: "#4F6DFF",
+    fontWeight: "700",
+    fontFamily: "Poppins_700Bold",
+  },
 
   // Footer
   footer: {
@@ -171,14 +229,17 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     backgroundColor: "#fff",
   },
-  priceLabel: { fontSize: 12, color: "#888" },
-  price: { fontSize: 20, fontWeight: "700", color: "#000" },
-  night: { fontSize: 14, color: "#888", fontWeight: "400" },
-  bookButton: {
-    backgroundColor: "#4F6DFF",
-    paddingVertical: 14,
-    paddingHorizontal: 32,
-    borderRadius: 12,
+  priceLabel: { fontSize: 12, color: "#A2A5AD" },
+  price: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#000",
+    fontFamily: "Poppins_600SemiBold",
   },
-  bookText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  night: {
+    fontSize: 15,
+    color: "#A2A5AD",
+    fontWeight: "600",
+    fontFamily: "Poppins_600SemiBold",
+  },
 });

@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   Pressable,
+  Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Checkbox } from "expo-checkbox";
@@ -98,12 +99,18 @@ const Login = () => {
 
         <View style={styles.socialContainer}>
           <TouchableOpacity style={styles.socialButton}>
-            <Ionicons name="logo-google" size={20} color="#DB4437" />
+            <Image
+              source={require("../../assets/images/social-icons/google.png")}
+              style={{ width: 20, height: 20, resizeMode: "contain" }}
+            />
             <CustomText style={styles.socialText}>Google</CustomText>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.socialButton}>
-            <Ionicons name="logo-facebook" size={20} color="#1877F2" />
+            <Image
+              source={require("../../assets/images/social-icons/facebook.png")}
+              style={{ width: 20, height: 20, resizeMode: "contain" }}
+            />
             <CustomText style={styles.socialText}>Facebook</CustomText>
           </TouchableOpacity>
         </View>
@@ -197,9 +204,9 @@ const styles = StyleSheet.create({
   socialButton: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 12,
+
+    backgroundColor: "#F4F7FF",
+    borderRadius: 30,
     paddingVertical: 10,
     paddingHorizontal: 20,
   },

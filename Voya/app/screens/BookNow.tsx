@@ -1,0 +1,522 @@
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Modal,
+  FlatList,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useRoute, RouteProp, useNavigation } from "@react-navigation/native";
+import type { RootStackParamList } from "../navigation/StackNavigator";
+import { CustomText } from "../components/custom/CustomText";
+import PrimaryButton from "../components/custom/PrimaryButton";
+
+type BookNowRouteProp = RouteProp<RootStackParamList, "BookNow">;
+
+const BookNow = () => {
+  type BookNowProp = NativeStackNavigationProp<RootStackParamList, "BookNow">;
+  const navigation = useNavigation<BookNowProp>();
+  const route = useRoute<BookNowRouteProp>();
+  const { hotel } = route.params;
+  const [dateModalVisible, setDateModalVisible] = useState(false);
+
+  const today = new Date();
+  const tomorrow = new Date();
+  const [selectedDate, setSelectedDate] = useState(today.getDate());
+  const [currentMonth, setCurrentMonth] = useState(today.getMonth()); // 0-indexed
+  const [currentYear, setCurrentYear] = useState(today.getFullYear());
+
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+  tomorrow.setDate(today.getDate() + 1);
+
+  const [checkInDate, setCheckInDate] = useState(today);
+  const [checkOutDate, setCheckOutDate] = useState(tomorrow);
+
+  const [dateType, setDateType] = useState<"checkin" | "checkout" | null>(null);
+
+  useEffect(() => {
+    if (dateModalVisible) {
+      const today = new Date();
+      setSelectedDate(today.getDate());
+      setCurrentMonth(today.getMonth());
+      setCurrentYear(today.getFullYear());
+    }
+  }, [dateModalVisible]);
+
+  // State for dropdowns
+  const [roomType, setRoomType] = useState("Economy Room");
+  const [payment, setPayment] = useState("5698 ***** **** 2317");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalType, setModalType] = useState<"room" | "payment" | null>(null);
+
+  const roomOptions = ["Economy Room", "Deluxe Room", "Suite"];
+  const paymentOptions = [
+    "5698 ***** **** 2317",
+    "4567 ***** **** 9123",
+    "PayPal",
+  ];
+
+  const openModal = (type: "room" | "payment") => {
+    setModalType(type);
+    setModalVisible(true);
+  };
+
+  const selectOption = (value: string) => {
+    if (modalType === "room") setRoomType(value);
+    if (modalType === "payment") setPayment(value);
+    setModalVisible(false);
+  };
+  const handleDateSelect = (day: number) => {
+    const newDate = new Date(currentYear, currentMonth, day);
+
+    if (dateType === "checkin") {
+      setCheckInDate(newDate);
+
+      // auto-adjust checkout if it's before checkin
+      if (checkOutDate <= newDate) {
+        const adjusted = new Date(newDate);
+        adjusted.setDate(adjusted.getDate() + 1);
+        setCheckOutDate(adjusted);
+      }
+    } else if (dateType === "checkout") {
+      if (newDate > checkInDate) {
+        setCheckOutDate(newDate);
+      } else {
+        alert("Checkout must be after check-in");
+      }
+    }
+
+    setDateModalVisible(false);
+  };
+
+  return (
+    <View style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="chevron-back" size={22} color="#000" />
+        </TouchableOpacity>
+        <CustomText style={styles.headerTitle}>Booking Info</CustomText>
+        <View style={{ width: 32 }} />
+      </View>
+
+      <View style={styles.hotelCard}>
+        <Image source={hotel.image} style={styles.hotelImage} />
+
+        <View style={styles.hotelInfo}>
+          {/* Name + Rating in one row */}
+          <View style={styles.nameRow}>
+            <CustomText style={styles.hotelName}>{hotel.name}</CustomText>
+            <View style={styles.ratingRow}>
+              <Ionicons name="star" size={14} color="#FFD700" />
+              <CustomText style={styles.rating}>{hotel.rating}</CustomText>
+            </View>
+          </View>
+
+          <CustomText style={styles.location}>{hotel.location}</CustomText>
+
+          <CustomText style={styles.price}>
+            $349,7 <CustomText style={styles.per}>/month</CustomText>
+          </CustomText>
+        </View>
+      </View>
+
+      {/* Divider line */}
+      <View style={styles.divider} />
+
+      {/* Booking Options */}
+      <View style={styles.options}>
+        {/* Dates */}
+        <View style={styles.row}>
+          <TouchableOpacity
+            style={styles.optionBoxFull}
+            onPress={() => {
+              setDateType("checkin");
+              setDateModalVisible(true);
+            }}
+          >
+            <Ionicons name="calendar-outline" size={18} color="#000" />
+            <CustomText style={styles.optionText}>
+              {checkInDate.toLocaleDateString()}
+            </CustomText>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.optionBoxFull}
+            onPress={() => {
+              setDateType("checkout");
+              setDateModalVisible(true);
+            }}
+          >
+            <Ionicons name="calendar-outline" size={18} color="#000" />
+            <CustomText style={styles.optionText}>
+              {checkOutDate.toLocaleDateString()}
+            </CustomText>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.row}>
+          <View style={[styles.optionBox, { marginRight: 12 }]}>
+            <Ionicons name="person-outline" size={18} color="#000" />
+            <CustomText style={styles.optionText}>1 Guest</CustomText>
+          </View>
+          <View style={styles.optionBox}>
+            <Ionicons name="bed-outline" size={18} color="#000" />
+            <CustomText style={styles.optionText}>1 Room</CustomText>
+          </View>
+        </View>
+
+        <TouchableOpacity
+          style={styles.optionBoxFull}
+          onPress={() => openModal("room")}
+        >
+          <Ionicons name="home-outline" size={18} color="#000" />
+          <CustomText style={styles.optionText}>{roomType}</CustomText>
+          <Ionicons
+            name="chevron-down"
+            size={18}
+            color="#000"
+            style={{ marginLeft: "auto" }}
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.optionBoxFull}
+          onPress={() => openModal("payment")}
+        >
+          <Ionicons name="card-outline" size={18} color="#000" />
+          <CustomText style={styles.optionText}>{payment}</CustomText>
+          <Ionicons
+            name="chevron-down"
+            size={18}
+            color="#000"
+            style={{ marginLeft: "auto" }}
+          />
+        </TouchableOpacity>
+      </View>
+
+      {/* Continue Button */}
+      <View style={styles.footer}>
+        <PrimaryButton
+          title="Continue"
+          onPress={() => {}}
+          style={{ width: "100%" }}
+        />
+      </View>
+
+      {/* Modal for Select */}
+      <Modal
+        transparent
+        visible={modalVisible}
+        animationType="slide"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalBox}>
+            <FlatList
+              data={modalType === "room" ? roomOptions : paymentOptions}
+              keyExtractor={(item) => item}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  style={styles.modalOption}
+                  onPress={() => selectOption(item)}
+                >
+                  <CustomText style={{ fontSize: 16 }}>{item}</CustomText>
+                </TouchableOpacity>
+              )}
+            />
+          </View>
+        </View>
+      </Modal>
+      <Modal
+        transparent
+        visible={dateModalVisible}
+        animationType="slide"
+        onRequestClose={() => setDateModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.calendarModal}>
+            {/* Header */}
+            <View style={styles.calendarHeader}>
+              <CustomText style={styles.calendarTitle}>Select Date</CustomText>
+              <TouchableOpacity onPress={() => setDateModalVisible(false)}>
+                <Ionicons name="close" size={22} />
+              </TouchableOpacity>
+            </View>
+
+            {/* Month Selector */}
+            <View style={styles.monthRow}>
+              <TouchableOpacity
+                onPress={() =>
+                  setCurrentMonth((prev) => (prev === 0 ? 11 : prev - 1))
+                }
+              >
+                <Ionicons name="chevron-back" size={20} />
+              </TouchableOpacity>
+              <CustomText style={styles.monthText}>
+                {new Date(currentYear, currentMonth).toLocaleString("default", {
+                  month: "long",
+                })}{" "}
+                - {currentYear}
+              </CustomText>
+              <TouchableOpacity
+                onPress={() =>
+                  setCurrentMonth((prev) => (prev === 11 ? 0 : prev + 1))
+                }
+              >
+                <Ionicons name="chevron-forward" size={20} />
+              </TouchableOpacity>
+            </View>
+
+            {/* Week Days */}
+            <View style={styles.weekRow}>
+              {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+                <CustomText key={day} style={styles.weekDay}>
+                  {day}
+                </CustomText>
+              ))}
+            </View>
+
+            <View style={styles.daysGrid}>
+              {Array.from({ length: daysInMonth }).map((_, i) => {
+                const day = i + 1;
+
+                const isPast =
+                  currentYear < today.getFullYear() ||
+                  (currentYear === today.getFullYear() &&
+                    currentMonth < today.getMonth()) ||
+                  (currentYear === today.getFullYear() &&
+                    currentMonth === today.getMonth() &&
+                    day < today.getDate());
+
+                const isSelected = day === selectedDate && !isPast;
+
+                return (
+                  <TouchableOpacity
+                    key={day}
+                    style={[
+                      styles.dayBox,
+                      isSelected && styles.daySelected,
+                      isPast && styles.disabledDay,
+                    ]}
+                    disabled={isPast}
+                    onPress={() => {
+                      if (!isPast) {
+                        setSelectedDate(day);
+                        handleDateSelect(day);
+                      }
+                    }}
+                  >
+                    <CustomText
+                      style={[
+                        styles.dayText,
+                        isSelected && { color: "#fff", fontWeight: "700" },
+                        isPast && styles.disabledDayText,
+                      ]}
+                    >
+                      {day}
+                    </CustomText>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+
+            {/* Continue Button */}
+            <PrimaryButton
+              title="Continue"
+              onPress={() => setDateModalVisible(false)}
+              style={{ marginTop: 16 }}
+            />
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+};
+
+export default BookNow;
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#F9F9F9", padding: 16 },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+    paddingTop: 40,
+    position: "relative",
+  },
+  disabledDay: {
+    backgroundColor: "transparent",
+    opacity: 0.4,
+  },
+
+  disabledDayText: {
+    color: "#A2A5AD",
+  },
+
+  backButton: {
+    position: "absolute",
+    left: 10,
+    top: 40,
+
+    padding: 8,
+
+    elevation: 3,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#181818",
+    fontFamily: "Poppins_700Bold",
+  },
+  hotelInfo: {
+    flex: 1,
+    marginLeft: 12,
+    justifyContent: "space-between",
+  },
+  hotelCard: {
+    flexDirection: "row",
+    padding: 12,
+    borderRadius: 16,
+    marginBottom: 12,
+  },
+  nameRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  ratingRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  divider: {
+    height: 1,
+    backgroundColor: "#E0E0E0",
+    marginBottom: 20,
+  },
+  hotelImage: { width: 100, height: 100, borderRadius: 12 },
+  hotelName: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#181818",
+    fontFamily: " Poppins_600SemiBold",
+  },
+  location: { fontSize: 12, color: "#A2A5AD", marginVertical: 2 },
+  price: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#000000",
+    fontFamily: " Poppins_600SemiBold",
+  },
+  per: {
+    fontSize: 12,
+    fontWeight: "400",
+    color: "#888",
+    fontFamily: " Poppins_600SemiBold",
+  },
+
+  rating: { fontSize: 12, marginLeft: 4 },
+
+  options: { marginBottom: 20 },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 12,
+  },
+  optionBox: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F5F7FF",
+    padding: 14,
+    borderRadius: 12,
+  },
+  optionBoxFull: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F5F7FF",
+    padding: 14,
+    borderRadius: 12,
+    marginBottom: 12,
+  },
+  optionText: { fontSize: 14, marginLeft: 8 },
+
+  footer: { marginTop: "auto", marginBottom: 20 },
+
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.3)",
+    justifyContent: "flex-end",
+  },
+  modalBox: {
+    backgroundColor: "#fff",
+    padding: 20,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+    maxHeight: "40%",
+  },
+  modalOption: {
+    paddingVertical: 12,
+  },
+  calendarModal: {
+    backgroundColor: "#fff",
+    padding: 20,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+  },
+
+  calendarHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+
+  calendarTitle: { fontSize: 16, fontWeight: "700" },
+
+  monthRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+
+  monthText: { fontSize: 16, fontWeight: "600" },
+
+  weekRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 8,
+  },
+
+  weekDay: { width: 30, textAlign: "center", fontSize: 12, color: "#888" },
+
+  daysGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
+  },
+
+  dayBox: {
+    width: 40,
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 2,
+    borderRadius: 20,
+  },
+
+  dayText: { fontSize: 14 },
+
+  daySelected: { backgroundColor: "#4A6CF7" },
+});

@@ -8,6 +8,7 @@ import SignUp from "../screens/SignUp";
 import Login from "../screens/Login";
 import Search from "../screens/Search";
 import Details from "../screens/Details";
+import BookNow from "../screens/BookNow";
 export type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
@@ -17,6 +18,7 @@ export type RootStackParamList = {
   Search: undefined;
   Tabs: undefined;
   Details: { hotel: any };
+  BookNow: { hotel: any };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -37,6 +39,7 @@ export default function StackNavigator() {
       <Stack.Screen name="Search" component={Search} />
       <Stack.Screen name="Tabs" component={BottomTabsNavigator} />
       <Stack.Screen name="Details" component={Details} />
+      <Stack.Screen name="BookNow" component={BookNow} />
     </Stack.Navigator>
   );
 }
