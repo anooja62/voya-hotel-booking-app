@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
-
+import { CustomText } from "../components/custom/CustomText";
 const Favorites = () => {
   return (
     <View>
-      <Text>Favorites</Text>
+      <CustomText>Favorites</CustomText>
     </View>
   );
 };

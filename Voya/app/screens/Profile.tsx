@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
-
+import { CustomText } from "../components/custom/CustomText";
 const Profile = () => {
   return (
     <View>
-      <Text>Profile</Text>
+      <CustomText>Profile</CustomText>
     </View>
   );
 };

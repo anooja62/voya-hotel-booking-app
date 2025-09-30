@@ -2,13 +2,13 @@
 import React from "react";
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   TouchableOpacity,
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { CustomText } from "../components/custom/CustomText";
 
 const Booking = () => {
   return (
@@ -16,7 +16,7 @@ const Booking = () => {
       {/* Header */}
       <View style={styles.header}>
         <Ionicons name="chevron-back" size={22} color="#000" />
-        <Text style={styles.headerTitle}>Booking Info</Text>
+        <CustomText style={styles.headerTitle}>Booking Info</CustomText>
       </View>
 
       {/* Hotel Card */}
@@ -26,15 +26,15 @@ const Booking = () => {
           style={styles.hotelImage}
         />
         <View style={styles.hotelInfo}>
-          <Text style={styles.hotelName}>Elysium Gardens</Text>
+          <CustomText style={styles.hotelName}>Elysium Gardens</CustomText>
           <View style={styles.ratingRow}>
             <Ionicons name="star" size={14} color="#FFD700" />
-            <Text style={styles.rating}>4.5</Text>
+            <CustomText style={styles.rating}>4.5</CustomText>
           </View>
-          <Text style={styles.location}>Paris, France</Text>
-          <Text style={styles.price}>
-            $349,7 <Text style={styles.perMonth}>/month</Text>
-          </Text>
+          <CustomText style={styles.location}>Paris, France</CustomText>
+          <CustomText style={styles.price}>
+            $349,7 <CustomText style={styles.perMonth}>/month</CustomText>
+          </CustomText>
         </View>
       </View>
 
@@ -47,11 +47,11 @@ const Booking = () => {
         <View style={styles.row}>
           <View style={styles.inputBox}>
             <Ionicons name="calendar-outline" size={18} color="#888" />
-            <Text style={styles.inputText}>20/07/25</Text>
+            <CustomText style={styles.inputText}>20/07/25</CustomText>
           </View>
           <View style={styles.inputBox}>
             <Ionicons name="calendar-outline" size={18} color="#888" />
-            <Text style={styles.inputText}>26/07/25</Text>
+            <CustomText style={styles.inputText}>26/07/25</CustomText>
           </View>
         </View>
 
@@ -59,18 +59,18 @@ const Booking = () => {
         <View style={styles.row}>
           <View style={styles.inputBox}>
             <Ionicons name="person-outline" size={18} color="#888" />
-            <Text style={styles.inputText}>1 Guest</Text>
+            <CustomText style={styles.inputText}>1 Guest</CustomText>
           </View>
           <View style={styles.inputBox}>
             <Ionicons name="bed-outline" size={18} color="#888" />
-            <Text style={styles.inputText}>1 Room</Text>
+            <CustomText style={styles.inputText}>1 Room</CustomText>
           </View>
         </View>
 
         {/* Room Type Dropdown */}
         <View style={styles.inputBox}>
           <Ionicons name="home-outline" size={18} color="#888" />
-          <Text style={styles.inputText}>Economy Room</Text>
+          <CustomText style={styles.inputText}>Economy Room</CustomText>
           <Ionicons
             name="chevron-down"
             size={18}
@@ -82,7 +82,7 @@ const Booking = () => {
         {/* Payment Dropdown */}
         <View style={styles.inputBox}>
           <Ionicons name="card-outline" size={18} color="#888" />
-          <Text style={styles.inputText}>5698 **** **** 2317</Text>
+          <CustomText style={styles.inputText}>5698 **** **** 2317</CustomText>
           <Ionicons
             name="chevron-down"
             size={18}
@@ -94,7 +94,7 @@ const Booking = () => {
 
       {/* Continue Button */}
       <TouchableOpacity style={styles.continueButton}>
-        <Text style={styles.continueText}>Continue</Text>
+        <CustomText style={styles.continueText}>Continue</CustomText>
       </TouchableOpacity>
     </ScrollView>
   );

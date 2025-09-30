@@ -1,8 +1,7 @@
-// components/PrimaryButton.tsx
 import React from "react";
+import { CustomText } from "./CustomText";
 import {
   TouchableOpacity,
-  Text,
   StyleSheet,
   ViewStyle,
   TextStyle,
@@ -23,7 +22,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 }) => {
   return (
     <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
-      <Text style={[styles.text, textStyle]}>{title}</Text>
+      <CustomText style={[styles.text, textStyle]}>{title}</CustomText>
     </TouchableOpacity>
   );
 };

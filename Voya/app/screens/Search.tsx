@@ -2,7 +2,6 @@
 import React from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TextInput,
   FlatList,
@@ -14,6 +13,7 @@ import PrimaryButton from "../components/custom/PrimaryButton";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
+import { CustomText } from "../components/custom/CustomText";
 const hotels = [
   {
     id: "1",
@@ -44,8 +44,8 @@ const Search = () => {
             style={styles.avatar}
           />
           <View>
-            <Text style={styles.subText}>Find events near</Text>
-            <Text style={styles.location}>California, USA</Text>
+            <CustomText style={styles.subText}>Find events near</CustomText>
+            <CustomText style={styles.location}>California, USA</CustomText>
           </View>
         </View>
         <Ionicons name="notifications-outline" size={22} color="#000" />
@@ -109,8 +109,8 @@ const Search = () => {
 
       {/* Popular Hotels */}
       <View style={styles.popularHeader}>
-        <Text style={styles.sectionTitle}>Popular Hotel</Text>
-        <Text style={styles.link}>View All</Text>
+        <CustomText style={styles.sectionTitle}>Popular Hotel</CustomText>
+        <CustomText style={styles.link}>View All</CustomText>
       </View>
 
       <View style={{ height: 200 }}>
@@ -129,10 +129,12 @@ const Search = () => {
               <Image source={item.image} style={styles.hotelImage} />
               <View style={styles.ratingBadge}>
                 <Ionicons name="star" size={14} color="#FFD700" />
-                <Text style={styles.ratingText}>{item.rating}</Text>
+                <CustomText style={styles.ratingText}>{item.rating}</CustomText>
               </View>
-              <Text style={styles.hotelName}>{item.name}</Text>
-              <Text style={styles.hotelLocation}>{item.location}</Text>
+              <CustomText style={styles.hotelName}>{item.name}</CustomText>
+              <CustomText style={styles.hotelLocation}>
+                {item.location}
+              </CustomText>
             </TouchableOpacity>
           )}
         />

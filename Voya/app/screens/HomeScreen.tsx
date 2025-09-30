@@ -1,9 +1,10 @@
 // screens/HomeScreen.tsx
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
+import { CustomText } from "../components/custom/CustomText";
 
 export default function HomeScreen() {
   type HomeNavProp = NativeStackNavigationProp<RootStackParamList, "Home">;
@@ -25,40 +26,40 @@ export default function HomeScreen() {
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <Text style={styles.logo}>
-            <Text
+          <CustomText style={styles.logo}>
+            <CustomText
               style={{ color: "#4F6DFF", fontFamily: "Poppins_400Regular" }}
             >
               V
-            </Text>
+            </CustomText>
             oya
-          </Text>
-          <Text style={styles.title}>
+          </CustomText>
+          <CustomText style={styles.title}>
             Your Perfect Stay is Just a {"\n"}Click Away!
-          </Text>
-          <Text style={styles.subtitle}>
+          </CustomText>
+          <CustomText style={styles.subtitle}>
             Discover the best hotels, tailored to your comfort and budget —
             anytime, anywhere.
-          </Text>
+          </CustomText>
 
           <TouchableOpacity
             style={styles.registerButton}
             onPress={() => navigation.navigate("Signup")}
           >
-            <Text style={styles.registerText}>Register</Text>
+            <CustomText style={styles.registerText}>Register</CustomText>
           </TouchableOpacity>
         </View>
 
         {/* Login text fixed at the bottom */}
-        <Text style={styles.loginText}>
+        <CustomText style={styles.loginText}>
           Already have an account?{" "}
-          <Text
+          <CustomText
             style={styles.loginLink}
             onPress={() => navigation.navigate("Login")}
           >
             Log In
-          </Text>
-        </Text>
+          </CustomText>
+        </CustomText>
       </View>
     </View>
   );

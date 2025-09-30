@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -13,6 +12,7 @@ import { Checkbox } from "expo-checkbox";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
+import { CustomText } from "../components/custom/CustomText";
 const SignUp = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isChecked, setChecked] = useState(false);
@@ -29,8 +29,10 @@ const SignUp = () => {
           <Ionicons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
 
-        <Text style={styles.title}>Let’s Get Started</Text>
-        <Text style={styles.subtitle}>Create an account to continue.</Text>
+        <CustomText style={styles.title}>Let’s Get Started</CustomText>
+        <CustomText style={styles.subtitle}>
+          Create an account to continue.
+        </CustomText>
 
         {/* Inputs */}
         <View style={styles.inputContainer}>
@@ -76,21 +78,21 @@ const SignUp = () => {
             onValueChange={setChecked}
             color="#4F6DFF"
           />
-          <Text style={styles.checkboxText}>
-            I agree to the <Text style={styles.link}>Terms</Text> and{" "}
-            <Text style={styles.link}>Privacy Policy</Text>
-          </Text>
+          <CustomText style={styles.checkboxText}>
+            I agree to the <CustomText style={styles.link}>Terms</CustomText>{" "}
+            and <CustomText style={styles.link}>Privacy Policy</CustomText>
+          </CustomText>
         </View>
 
         {/* Register button */}
         <TouchableOpacity style={styles.registerButton}>
-          <Text style={styles.registerText}>Register</Text>
+          <CustomText style={styles.registerText}>Register</CustomText>
         </TouchableOpacity>
 
         {/* Divider */}
         <View style={styles.dividerContainer}>
           <View style={styles.line} />
-          <Text style={styles.orText}>Or</Text>
+          <CustomText style={styles.orText}>Or</CustomText>
           <View style={styles.line} />
         </View>
 
@@ -101,7 +103,7 @@ const SignUp = () => {
               source={require("../../assets/images/social-icons/google.png")}
               style={{ width: 20, height: 20, resizeMode: "contain" }}
             />
-            <Text style={styles.socialText}>Google</Text>
+            <CustomText style={styles.socialText}>Google</CustomText>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.socialButton}>
@@ -109,21 +111,21 @@ const SignUp = () => {
               source={require("../../assets/images/social-icons/facebook.png")}
               style={{ width: 20, height: 20, resizeMode: "contain" }}
             />
-            <Text style={styles.socialText}>Facebook</Text>
+            <CustomText style={styles.socialText}>Facebook</CustomText>
           </TouchableOpacity>
         </View>
       </View>
 
       {/* Bottom text */}
-      <Text style={styles.loginText}>
+      <CustomText style={styles.loginText}>
         Already have an account?{" "}
-        <Text
+        <CustomText
           style={styles.loginLink}
           onPress={() => navigation.navigate("Login")}
         >
           Log In
-        </Text>
-      </Text>
+        </CustomText>
+      </CustomText>
     </View>
   );
 };

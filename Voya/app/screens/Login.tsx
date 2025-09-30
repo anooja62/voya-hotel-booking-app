@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -12,6 +11,7 @@ import { Checkbox } from "expo-checkbox";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
+import { CustomText } from "../components/custom/CustomText";
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -28,8 +28,8 @@ const Login = () => {
         >
           <Ionicons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
-        <Text style={styles.title}>Welcome Back!</Text>
-        <Text style={styles.subtitle}>Log in to continue.</Text>
+        <CustomText style={styles.title}>Welcome Back!</CustomText>
+        <CustomText style={styles.subtitle}>Log in to continue.</CustomText>
 
         <View style={styles.inputContainer}>
           <Ionicons name="mail-outline" size={20} color="#999" />
@@ -69,11 +69,11 @@ const Login = () => {
               onValueChange={setRememberMe}
               color="#4F6DFF"
             />
-            <Text style={styles.checkboxText}>Remember Me</Text>
+            <CustomText style={styles.checkboxText}>Remember Me</CustomText>
           </View>
 
           <TouchableOpacity>
-            <Text style={styles.link}>Forgot Password</Text>
+            <CustomText style={styles.link}>Forgot Password</CustomText>
           </TouchableOpacity>
         </View>
 
@@ -87,36 +87,36 @@ const Login = () => {
             }
           }}
         >
-          <Text style={styles.loginText}>Log In</Text>
+          <CustomText style={styles.loginText}>Log In</CustomText>
         </TouchableOpacity>
 
         <View style={styles.dividerContainer}>
           <View style={styles.line} />
-          <Text style={styles.orText}>Or</Text>
+          <CustomText style={styles.orText}>Or</CustomText>
           <View style={styles.line} />
         </View>
 
         <View style={styles.socialContainer}>
           <TouchableOpacity style={styles.socialButton}>
             <Ionicons name="logo-google" size={20} color="#DB4437" />
-            <Text style={styles.socialText}>Google</Text>
+            <CustomText style={styles.socialText}>Google</CustomText>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.socialButton}>
             <Ionicons name="logo-facebook" size={20} color="#1877F2" />
-            <Text style={styles.socialText}>Facebook</Text>
+            <CustomText style={styles.socialText}>Facebook</CustomText>
           </TouchableOpacity>
         </View>
       </View>
-      <Text style={styles.signupText}>
+      <CustomText style={styles.signupText}>
         Don’t have an account?{" "}
-        <Text
+        <CustomText
           style={styles.signupLink}
           onPress={() => navigation.navigate("Signup")}
         >
           Sign Up
-        </Text>
-      </Text>
+        </CustomText>
+      </CustomText>
     </View>
   );
 };

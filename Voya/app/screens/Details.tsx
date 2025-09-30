@@ -1,7 +1,6 @@
 import React from "react";
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   TouchableOpacity,
@@ -11,6 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import PrimaryButton from "../components/custom/PrimaryButton";
+import { CustomText } from "../components/custom/CustomText";
 
 type DetailsRouteProp = RouteProp<RootStackParamList, "Details">;
 
@@ -32,64 +32,64 @@ const Details = () => {
           >
             <Ionicons name="chevron-back" size={22} color="#000" />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Details</Text>
+          <CustomText style={styles.headerTitle}>Details</CustomText>
         </View>
 
         {/* Hotel Info */}
         <View style={styles.content}>
           <View style={styles.titleRow}>
-            <Text style={styles.hotelName}>{hotel.name}</Text>
+            <CustomText style={styles.hotelName}>{hotel.name}</CustomText>
             <Ionicons name="heart-outline" size={22} color="#4F6DFF" />
           </View>
-          <Text style={styles.location}>{hotel.location}</Text>
+          <CustomText style={styles.location}>{hotel.location}</CustomText>
           <View style={styles.ratingRow}>
             <Ionicons name="star" size={16} color="#FFD700" />
-            <Text style={styles.rating}>{hotel.rating}</Text>
-            <Text style={styles.reviews}>(1,092 Reviews)</Text>
+            <CustomText style={styles.rating}>{hotel.rating}</CustomText>
+            <CustomText style={styles.reviews}>(1,092 Reviews)</CustomText>
           </View>
 
           {/* Facilities */}
-          <Text style={styles.sectionTitle}>Facilities</Text>
+          <CustomText style={styles.sectionTitle}>Facilities</CustomText>
           <View style={styles.facilitiesRow}>
             <View style={styles.facility}>
               <Ionicons name="wifi-outline" size={22} color="#000" />
-              <Text style={styles.facilityText}>Wi-Fi</Text>
+              <CustomText style={styles.facilityText}>Wi-Fi</CustomText>
             </View>
             <View style={styles.facility}>
               <Ionicons name="restaurant-outline" size={22} color="#000" />
-              <Text style={styles.facilityText}>Restaurant</Text>
+              <CustomText style={styles.facilityText}>Restaurant</CustomText>
             </View>
             <View style={styles.facility}>
               <Ionicons name="cafe-outline" size={22} color="#000" />
-              <Text style={styles.facilityText}>Cafe</Text>
+              <CustomText style={styles.facilityText}>Cafe</CustomText>
             </View>
             <View style={styles.facility}>
               <Ionicons name="leaf-outline" size={22} color="#000" />
-              <Text style={styles.facilityText}>Garden</Text>
+              <CustomText style={styles.facilityText}>Garden</CustomText>
             </View>
             <View style={styles.facility}>
               <Ionicons name="barbell-outline" size={22} color="#000" />
-              <Text style={styles.facilityText}>Gym</Text>
+              <CustomText style={styles.facilityText}>Gym</CustomText>
             </View>
           </View>
 
           {/* Description */}
-          <Text style={styles.sectionTitle}>Description</Text>
-          <Text style={styles.description}>
+          <CustomText style={styles.sectionTitle}>Description</CustomText>
+          <CustomText style={styles.description}>
             Lorem ipsum dolor sit amet consectetur. Lectus dictum ut nunc
             sodales a. Nibh tortor malesuada amet malesuada{" "}
-            <Text style={styles.readMore}>Read More</Text>
-          </Text>
+            <CustomText style={styles.readMore}>Read More</CustomText>
+          </CustomText>
         </View>
       </ScrollView>
 
       {/* Fixed Footer */}
       <View style={styles.footer}>
         <View>
-          <Text style={styles.priceLabel}>Price</Text>
-          <Text style={styles.price}>
-            $1,500 <Text style={styles.night}>/ Night</Text>
-          </Text>
+          <CustomText style={styles.priceLabel}>Price</CustomText>
+          <CustomText style={styles.price}>
+            $1,500 <CustomText style={styles.night}>/ Night</CustomText>
+          </CustomText>
         </View>
         <PrimaryButton
           title="Book Now"
