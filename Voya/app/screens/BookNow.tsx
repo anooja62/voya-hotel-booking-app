@@ -241,7 +241,7 @@ const BookNow = () => {
       <View style={styles.footer}>
         <PrimaryButton
           title="Continue"
-          onPress={() => {}}
+          onPress={() => navigation.navigate("GuestInfo")}
           style={{ width: "100%" }}
         />
       </View>
