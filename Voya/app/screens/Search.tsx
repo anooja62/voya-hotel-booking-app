@@ -157,7 +157,7 @@ export default Search;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F9F9F9",
+    backgroundColor: Theme.background,
     padding: 16,
     paddingTop: 60,
   },

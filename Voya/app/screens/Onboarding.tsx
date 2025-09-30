@@ -172,7 +172,7 @@ const SLICE_HEIGHT = height * 0.5 * 0.9;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Theme.background,
     paddingTop: 60,
     paddingBottom: 30,
   },

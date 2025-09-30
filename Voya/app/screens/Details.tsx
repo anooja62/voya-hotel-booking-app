@@ -151,7 +151,7 @@ const Details = () => {
 export default Details;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F9F9F9" },
+  container: { flex: 1, backgroundColor: Theme.background },
   scrollContent: { paddingBottom: 100 },
   // Image
   imageContainer: { position: "relative" },

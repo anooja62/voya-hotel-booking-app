@@ -10,7 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
 import CustomHeader from "../components/custom/CustomHeader";
-
+import { Theme } from "../constants/theme";
 const Booking = () => {
   return (
     <ScrollView style={styles.container}>
@@ -99,7 +99,7 @@ const Booking = () => {
 export default Booking;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F9F9F9", padding: 16 },
+  container: { flex: 1, backgroundColor: Theme.background, padding: 16 },
 
   // Hotel Card
   hotelCard: {

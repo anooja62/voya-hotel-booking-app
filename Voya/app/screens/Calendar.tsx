@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     backgroundColor: Theme.primary,
   },
   receiptText: {
-    color: "#F9F9F9",
+    color: Theme.background,
     fontWeight: "700",
     fontSize: 16,
     fontFamily: Theme.bold,

@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     //left: 24,
     zIndex: 10,
   },
-  container: { flex: 1, backgroundColor: "#fff", padding: 24 },
+  container: { flex: 1, backgroundColor: Theme.background, padding: 24 },
   title: {
     fontSize: 26,
     fontWeight: "600",

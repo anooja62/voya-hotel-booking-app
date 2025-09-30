@@ -232,7 +232,7 @@ const AddCard = () => {
 export default AddCard;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 16 },
+  container: { flex: 1, backgroundColor: Theme.background, padding: 16 },
 
   cardPreview: {
     backgroundColor: "#4A6CF7",

@@ -65,7 +65,7 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
+  container: { flex: 1, backgroundColor: Theme.background },
 
   // Top
   topContainer: { flex: 1, position: "relative" },
