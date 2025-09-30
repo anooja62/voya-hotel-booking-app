@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-    backgroundColor: "#fff",
+
     borderRadius: 12,
     marginBottom: 16,
     marginHorizontal: 4,
@@ -122,7 +122,6 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOpacity: 0.05,
     shadowRadius: 4,
-    elevation: 2,
   },
   image: {
     width: "100%",
