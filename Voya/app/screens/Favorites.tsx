@@ -8,7 +8,7 @@ import {
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
-
+import CustomHeader from "../components/custom/CustomHeader";
 const Favorites = () => {
   const favorites = [
     {
@@ -71,13 +71,7 @@ const Favorites = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Ionicons name="chevron-back" size={22} color="#000" />
-        <CustomText style={styles.headerTitle}>Favorite</CustomText>
-        <View style={{ width: 22 }} />
-      </View>
-
+      <CustomHeader title="Favorites" />
       {/* Grid List */}
       <FlatList
         data={favorites}
@@ -100,18 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 16,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 20,
-    paddingTop: 40,
-  },
-  headerTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    fontFamily: "Poppins_700Bold",
-  },
+
   card: {
     flex: 1,
 

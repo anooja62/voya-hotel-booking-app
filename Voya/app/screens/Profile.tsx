@@ -2,18 +2,12 @@ import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
+import CustomHeader from "../components/custom/CustomHeader";
 
 const Profile = () => {
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Ionicons name="chevron-back" size={22} color="#000" />
-        <CustomText style={styles.headerTitle}>Profile</CustomText>
-        <View style={{ width: 22 }} />
-        {/* keeps title centered (same width as back icon) */}
-      </View>
-
+      <CustomHeader title="Profile" />
       {/* User Info */}
       <View style={styles.userInfo}>
         <Image
@@ -72,18 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 16,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 20,
-    paddingTop: 40,
-  },
-  headerTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    fontFamily: "Poppins_700Bold",
-  },
+
   userInfo: {
     flexDirection: "row",
     alignItems: "center",

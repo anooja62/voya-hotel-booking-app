@@ -27,7 +27,7 @@ const hotels = [
     name: "California, USA",
     location: "London, England",
     rating: 4.5,
-    image: require("../../assets/images/details/hotel1.jpg"),
+    image: require("../../assets/images/hotel/hotel2.jpeg"),
   },
 ];
 
@@ -58,7 +58,7 @@ const Search = () => {
           <Ionicons name="location-outline" size={18} color="#999" />
           <TextInput
             style={styles.input}
-            placeholder="London, England"
+            placeholder="Enter Location"
             placeholderTextColor="#A2A5AD"
           />
         </View>
@@ -120,7 +120,7 @@ const Search = () => {
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id}
           contentContainerStyle={{ paddingVertical: 4 }}
-          style={{ flexGrow: 0 }} // 👈 keeps height = content
+          style={{ flexGrow: 0 }}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.hotelCard}
@@ -167,8 +167,14 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontWeight: "500",
     marginBottom: 6,
+    fontFamily: "Poppins_500Medium",
   },
-  location: { fontSize: 15, fontWeight: "600" },
+  location: {
+    fontSize: 15,
+    fontWeight: "600",
+    fontFamily: "Poppins_600SemiBold",
+    color: "#000000",
+  },
 
   // Search Box
   searchBox: {
@@ -215,7 +221,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 12,
   },
-  sectionTitle: { fontSize: 22, fontWeight: "600", color: "#181818" },
+  sectionTitle: {
+    fontSize: 22,
+    fontWeight: "600",
+    color: "#181818",
+    fontFamily: "Poppins_600SemiBold",
+    lineHeight: 27,
+  },
   link: { fontSize: 16, color: "#4B75E9", fontWeight: "500" },
 
   // Hotel Cards

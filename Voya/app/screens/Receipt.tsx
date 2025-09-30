@@ -8,17 +8,12 @@ import {
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
+import CustomHeader from "../components/custom/CustomHeader";
 
 const Receipt = () => {
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Ionicons name="chevron-back" size={22} color="#000" />
-        <CustomText style={styles.headerTitle}>E-Receipt</CustomText>
-        <View style={{ width: 22 }} />
-      </View>
-
+      <CustomHeader title="E-Receipt" />
       <ScrollView
         contentContainerStyle={{ paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
@@ -122,18 +117,7 @@ export default Receipt;
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff", padding: 16 },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingTop: 40,
-    marginBottom: 20,
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
-  },
+
   hotelRow: { flexDirection: "row", marginBottom: 20 },
   image: { width: 80, height: 80, borderRadius: 10, marginRight: 12 },
   hotelName: {

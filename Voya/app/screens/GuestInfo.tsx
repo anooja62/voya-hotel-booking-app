@@ -8,6 +8,7 @@ import {
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
+import CustomHeader from "../components/custom/CustomHeader";
 
 const GuestInfo = () => {
   const [name, setName] = useState("");
@@ -17,13 +18,7 @@ const GuestInfo = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Ionicons name="chevron-back" size={22} color="#000" />
-        <CustomText style={styles.headerTitle}>Guest Info</CustomText>
-        <View style={{ width: 22 }} />
-      </View>
-
+      <CustomHeader title="Guest Info" />
       {/* Input Fields */}
       <View style={styles.inputBox}>
         <Ionicons name="person-outline" size={18} color="#A2A5AD" />
@@ -88,18 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingHorizontal: 20,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 40,
-    marginBottom: 20,
-  },
-  headerTitle: {
-    flex: 1,
-    textAlign: "center",
-    fontSize: 16,
-    fontWeight: "600",
-  },
+
   inputBox: {
     flexDirection: "row",
     alignItems: "center",

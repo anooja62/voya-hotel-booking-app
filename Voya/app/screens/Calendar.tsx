@@ -11,6 +11,7 @@ import { CustomText } from "../components/custom/CustomText";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
+import CustomHeader from "../components/custom/CustomHeader";
 const Calendar = () => {
   const [activeTab, setActiveTab] = useState("Upcoming");
   type CalendarProp = NativeStackNavigationProp<RootStackParamList, "Tabs">;
@@ -85,13 +86,7 @@ const Calendar = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Ionicons name="chevron-back" size={22} color="#000" />
-        <CustomText style={styles.headerTitle}>My Booking</CustomText>
-        <View style={{ width: 22 }} />
-      </View>
-
+      <CustomHeader title="My Booking" />
       {/* Tabs */}
       <View style={styles.tabs}>
         {["Upcoming", "Completed", "Cancelled"].map((tab) => (
@@ -154,18 +149,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 16,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingTop: 40,
-    marginBottom: 20,
-  },
-  headerTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    fontFamily: "Poppins_700Bold",
-  },
+
   tabs: {
     flexDirection: "row",
     justifyContent: "space-around",

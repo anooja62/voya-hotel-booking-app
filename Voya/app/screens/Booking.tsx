@@ -9,16 +9,12 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
+import CustomHeader from "../components/custom/CustomHeader";
 
 const Booking = () => {
   return (
     <ScrollView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Ionicons name="chevron-back" size={22} color="#000" />
-        <CustomText style={styles.headerTitle}>Booking Info</CustomText>
-      </View>
-
+      <CustomHeader title="Booking Info" />
       {/* Hotel Card */}
       <View style={styles.hotelCard}>
         <Image
@@ -104,14 +100,6 @@ export default Booking;
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff", padding: 16 },
-
-  // Header
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  headerTitle: { fontSize: 18, fontWeight: "700", marginLeft: 16 },
 
   // Hotel Card
   hotelCard: {

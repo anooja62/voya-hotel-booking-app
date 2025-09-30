@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import PrimaryButton from "../components/custom/PrimaryButton";
 import { useNavigation } from "@react-navigation/native";
-
+import CustomHeader from "../components/custom/CustomHeader";
 const AddCard = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [cardHolder, setCardHolder] = useState("");
@@ -30,13 +30,7 @@ const AddCard = () => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
         {/* Header */}
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name="chevron-back" size={22} color="#000" />
-          </TouchableOpacity>
-          <Text style={styles.headerTitle}>Add New Card</Text>
-          <View style={{ width: 22 }} />
-        </View>
+        <CustomHeader title="Add New Card" />
 
         {/* Card Preview */}
         <View style={styles.cardPreview}>
@@ -238,20 +232,7 @@ export default AddCard;
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
-    marginTop: 40,
-    paddingHorizontal: 20,
-  },
-  headerTitle: {
-    flex: 1,
-    textAlign: "center",
-    fontSize: 16,
-    fontWeight: "600",
-    fontFamily: "Poppins_700Bold",
-  },
+
   cardPreview: {
     backgroundColor: "#4A6CF7",
     borderRadius: 16,

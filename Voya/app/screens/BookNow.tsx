@@ -15,6 +15,7 @@ import { useRoute, RouteProp, useNavigation } from "@react-navigation/native";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
 import PrimaryButton from "../components/custom/PrimaryButton";
+import CustomHeader from "../components/custom/CustomHeader";
 
 type BookNowRouteProp = RouteProp<RootStackParamList, "BookNow">;
 
@@ -94,18 +95,7 @@ const BookNow = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Ionicons name="chevron-back" size={22} color="#000" />
-        </TouchableOpacity>
-        <CustomText style={styles.headerTitle}>Booking Info</CustomText>
-        <View style={{ width: 32 }} />
-      </View>
-
+      <CustomHeader title="Booking Info" />
       <View style={styles.hotelCard}>
         <Image source={hotel.image} style={styles.hotelImage} />
 
@@ -454,14 +444,7 @@ export default BookNow;
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#F9F9F9", padding: 16 },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 20,
-    paddingTop: 40,
-    position: "relative",
-  },
+
   disabledDay: {
     backgroundColor: "transparent",
     opacity: 0.4,
@@ -482,12 +465,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOpacity: 0.1,
   },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: "700",
-    color: "#181818",
-    fontFamily: "Poppins_700Bold",
-  },
+
   hotelInfo: {
     flex: 1,
     marginLeft: 12,
