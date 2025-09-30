@@ -90,13 +90,13 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "600",
     color: "#000000",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   editText: {
     fontSize: 14,
     color: Theme.primary,
     fontWeight: "500",
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
   userEmail: {
     fontSize: 12,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     marginTop: 16,
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
     marginBottom: 8,
     color: "#000000",
   },
@@ -127,6 +127,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#000000",
     fontWeight: "600",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
 });

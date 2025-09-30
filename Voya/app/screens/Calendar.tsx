@@ -163,12 +163,12 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     color: "#181818",
     fontWeight: "600",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   activeTabText: {
     color: Theme.primary,
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   activeLine: {
     height: 2,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
     color: "#181818",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   location: {
     fontSize: 14,
@@ -209,13 +209,13 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: Theme.gray,
     marginLeft: 2,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
   price: {
     fontSize: 18,
     fontWeight: "600",
     color: "#000",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   datePriceRow: {
     flexDirection: "row",
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "600",
     color: "#000000",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   topRow: {
     flexDirection: "row",
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
     color: Theme.primary,
     fontWeight: "600",
     fontSize: 16,
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   receiptBtn: {
     backgroundColor: Theme.primary,
@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
     color: "#F9F9F9",
     fontWeight: "700",
     fontSize: 16,
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   emptyState: {
     flex: 1,
@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#181818",
     marginTop: 12,
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   emptySubtitle: {
     fontSize: 14,
@@ -306,6 +306,6 @@ const styles = StyleSheet.create({
     marginTop: 6,
     textAlign: "center",
     paddingHorizontal: 30,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
 });

@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#181818",
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 });

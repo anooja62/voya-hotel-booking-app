@@ -176,12 +176,12 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontWeight: "500",
     marginBottom: 6,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
   location: {
     fontSize: 15,
     fontWeight: "600",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
     color: "#000000",
   },
 
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "600",
     color: "#181818",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
     lineHeight: 27,
   },
   link: { fontSize: 16, color: Theme.primary, fontWeight: "500" },

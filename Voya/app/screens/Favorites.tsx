@@ -129,14 +129,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginLeft: 4,
     fontWeight: "500",
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
   name: {
     fontSize: 15,
     fontWeight: "600",
     marginBottom: 2,
     color: "#000000",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   location: {
     fontSize: 12,
@@ -151,13 +151,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
 
     color: "#000",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   month: {
     fontSize: 15,
     color: Theme.gray,
     marginLeft: 2,
     fontWeight: "600",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
 });

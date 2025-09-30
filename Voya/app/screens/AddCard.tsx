@@ -206,7 +206,7 @@ const AddCard = () => {
         <TouchableOpacity
           style={styles.modalOverlay}
           activeOpacity={1}
-          onPressOut={() => setSuccessVisible(false)} // 👈 close on outside press
+          onPressOut={() => setSuccessVisible(false)}
         >
           <View style={styles.successModal}>
             <View style={styles.iconCircle}>
@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 20,
     textAlign: "center",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   doneBtn: {
     width: "100%",

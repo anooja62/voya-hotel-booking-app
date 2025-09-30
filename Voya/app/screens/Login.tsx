@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 8,
     color: "#181818",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   content: {
     flex: 1,
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 13,
     textDecorationLine: "underline",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 
   dividerContainer: {
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#333",
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 
   signupText: {
@@ -249,6 +249,6 @@ const styles = StyleSheet.create({
     color: "#4F6DFF",
     fontWeight: "700",
 
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 });

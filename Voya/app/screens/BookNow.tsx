@@ -394,7 +394,7 @@ const BookNow = () => {
                     styles.optionText,
                     {
                       fontWeight: "700",
-                      fontFamily: "Poppins_700Bold",
+                      fontFamily: Theme.bold,
                       marginLeft: 8,
                     },
                   ]}
@@ -431,7 +431,7 @@ const BookNow = () => {
                 <CustomText
                   style={[
                     styles.optionText,
-                    { fontWeight: "700", fontFamily: "Poppins_700Bold" },
+                    { fontWeight: "700", fontFamily: Theme.bold },
                   ]}
                 >
                   Mastercard
@@ -661,12 +661,12 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 16,
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   sectionLabel: {
     fontSize: 18,
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
     marginTop: 12,
     marginBottom: 6,
   },
@@ -686,7 +686,7 @@ const styles = StyleSheet.create({
     //flex: 1,
     color: "#000",
     fontWeight: "400",
-    // fontFamily: "Poppins_700Bold",
+    // fontFamily: Theme.bold,
   },
   cardIcon: { width: 24, height: 18, resizeMode: "contain", marginRight: 8 },
   radioCircle: {
@@ -718,6 +718,6 @@ const styles = StyleSheet.create({
     color: "#4A6CF7",
     fontWeight: "600",
     marginLeft: 6,
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
 });

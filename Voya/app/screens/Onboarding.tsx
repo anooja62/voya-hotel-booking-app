@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     color: Theme.gray,
     lineHeight: 27,
     fontWeight: "500",
-    fontFamily: "Poppins-500Medium",
+    fontFamily: Theme.medium,
   },
   bottomRow: {
     flexDirection: "row",

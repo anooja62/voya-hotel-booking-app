@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 8,
     color: "#181818",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   subtitle: {
     fontSize: 14,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontFamily: "Poppins-500Medium",
   },
-  link: { color: "#4F6DFF", fontWeight: "700", fontFamily: "Poppins_700Bold" },
+  link: { color: "#4F6DFF", fontWeight: "700", fontFamily: Theme.bold },
 
   dividerContainer: {
     flexDirection: "row",
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#333",
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 
   loginText: {
@@ -250,6 +250,6 @@ const styles = StyleSheet.create({
     color: "#4F6DFF",
     fontWeight: "700",
 
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 });

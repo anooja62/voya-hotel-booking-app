@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     transform: [{ translateX: -30 }],
     fontSize: 16,
     fontWeight: "600",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 
   // Content
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     color: Theme.gray,
     marginBottom: 6,
     fontWeight: "500",
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
   ratingRow: { flexDirection: "row", alignItems: "center", marginBottom: 20 },
   rating: {
@@ -204,13 +204,13 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginLeft: 4,
     color: Theme.gray,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
   reviews: {
     fontSize: 14,
     color: Theme.gray,
     marginLeft: 4,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
 
   // Facilities
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
   facilityText: {
     fontSize: 12,
     marginTop: 4,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
     color: "#000000",
   },
 
@@ -240,12 +240,12 @@ const styles = StyleSheet.create({
     color: Theme.gray,
     lineHeight: 27,
     marginBottom: 20,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
   readMore: {
     color: "#4F6DFF",
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 
   // Footer
@@ -262,13 +262,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     color: "#000",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   night: {
     fontSize: 15,
     color: Theme.gray,
     fontWeight: "600",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   indicatorContainer: {
     position: "absolute",

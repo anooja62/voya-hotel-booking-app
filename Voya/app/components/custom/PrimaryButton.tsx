@@ -6,7 +6,7 @@ import {
   ViewStyle,
   TextStyle,
 } from "react-native";
-
+import { Theme } from "../../constants/theme";
 interface PrimaryButtonProps {
   title: string;
   onPress?: () => void;
@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 });

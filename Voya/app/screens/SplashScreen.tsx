@@ -39,22 +39,22 @@ const styles = StyleSheet.create({
   brand: {
     fontSize: 55,
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   brandV: {
     color: Theme.primary,
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   brandRest: {
     color: "#000000",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   tagline: {
     marginTop: 8,
     fontSize: 16,
     color: "#000000",
     fontWeight: "600",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
 });

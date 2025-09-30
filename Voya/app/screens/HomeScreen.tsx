@@ -29,7 +29,7 @@ export default function HomeScreen() {
         >
           <CustomText style={styles.logo}>
             <CustomText
-              style={{ color: Theme.primary, fontFamily: "Poppins_700Bold" }}
+              style={{ color: Theme.primary, fontFamily: Theme.bold }}
             >
               V
             </CustomText>
@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
     fontSize: 55,
     fontWeight: "700",
     marginBottom: 20,
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   title: {
     fontSize: 22,
     fontWeight: "600",
     textAlign: "center",
     marginBottom: 8,
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   subtitle: {
     fontSize: 15,
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     lineHeight: 22,
     fontWeight: "500",
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
 
   loginText: {
@@ -119,6 +119,6 @@ const styles = StyleSheet.create({
     color: "#4F6DFF",
     fontWeight: "700",
 
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 });

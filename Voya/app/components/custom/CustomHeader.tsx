@@ -3,7 +3,7 @@ import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { CustomText } from "./CustomText";
-
+import { Theme } from "../../constants/theme";
 interface CustomHeaderProps {
   title: string;
   showBack?: boolean;
@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "700",
     color: "#181818",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
 });

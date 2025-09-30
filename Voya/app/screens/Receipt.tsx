@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   hotelName: {
     fontSize: 16,
     fontWeight: "600",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   ratingRow: { flexDirection: "row", alignItems: "center" },
   rating: { fontSize: 13, marginLeft: 4 },
@@ -195,14 +195,14 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: Theme.gray,
     marginTop: 2,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: Theme.medium,
   },
-  price: { fontSize: 18, fontWeight: "600", fontFamily: "Poppins_600SemiBold" },
+  price: { fontSize: 18, fontWeight: "600", fontFamily: Theme.semiBold },
   per: {
     fontSize: 12,
     fontWeight: "400",
     color: "#888",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   sectionTitle: {
     fontSize: 18,
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 8,
     color: "#181818",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   detailRow: {
     flexDirection: "row",
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Theme.gray,
     fontWeight: "600",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
     lineHeight: 25,
   },
   value: { fontSize: 14, color: "#000" },
@@ -247,12 +247,12 @@ const styles = StyleSheet.create({
   backText: {
     color: Theme.primary,
     fontWeight: "600",
-    fontFamily: "Poppins_600SemiBold",
+    fontFamily: Theme.semiBold,
   },
   downloadText: {
     color: "#fff",
     fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   modalOverlay: {
     flex: 1,
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginVertical: 12,
     color: "#181818",
-    fontFamily: "Poppins_700Bold",
+    fontFamily: Theme.bold,
   },
   doneBtn: { marginTop: 12 },
 });
