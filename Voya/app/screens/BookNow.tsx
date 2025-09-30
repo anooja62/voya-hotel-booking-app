@@ -473,9 +473,10 @@ const styles = StyleSheet.create({
   },
   hotelCard: {
     flexDirection: "row",
-    padding: 12,
+    //padding: 12,
     borderRadius: 16,
     marginBottom: 12,
+    paddingBottom: 12,
   },
   nameRow: {
     flexDirection: "row",

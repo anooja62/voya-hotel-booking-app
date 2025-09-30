@@ -231,14 +231,14 @@ const AddCard = () => {
 export default AddCard;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
+  container: { flex: 1, backgroundColor: "#fff", padding: 16 },
 
   cardPreview: {
     backgroundColor: "#4A6CF7",
     borderRadius: 16,
     padding: 20,
     marginBottom: 20,
-    marginHorizontal: 20,
+
     position: "relative",
   },
   cardNumber: { fontSize: 20, color: "#fff", marginBottom: 20 },
@@ -261,13 +261,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     marginBottom: 15,
     height: 50,
-    marginHorizontal: 20,
   },
   input: { flex: 1, marginLeft: 8, fontSize: 14, color: "#000" },
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal: 20,
   },
   footer: { position: "absolute", bottom: 20, left: 20, right: 20 },
 
