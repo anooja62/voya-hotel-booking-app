@@ -14,6 +14,7 @@ import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import PrimaryButton from "../components/custom/PrimaryButton";
 import { CustomText } from "../components/custom/CustomText";
+import { Theme } from "../constants/theme";
 const { width } = Dimensions.get("window");
 type DetailsRouteProp = RouteProp<RootStackParamList, "Details">;
 type DetailsNavigationProp = NativeStackNavigationProp<
@@ -192,7 +193,7 @@ const styles = StyleSheet.create({
   },
   location: {
     fontSize: 14,
-    color: "#A2A5AD",
+    color: Theme.gray,
     marginBottom: 6,
     fontWeight: "500",
     fontFamily: "Poppins_500Medium",
@@ -202,12 +203,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
     marginLeft: 4,
-    color: "#A2A5AD",
+    color: Theme.gray,
     fontFamily: "Poppins_500Medium",
   },
   reviews: {
     fontSize: 14,
-    color: "#A2A5AD",
+    color: Theme.gray,
     marginLeft: 4,
     fontFamily: "Poppins_500Medium",
   },
@@ -236,7 +237,7 @@ const styles = StyleSheet.create({
   // Description
   description: {
     fontSize: 15,
-    color: "#A2A5AD",
+    color: Theme.gray,
     lineHeight: 27,
     marginBottom: 20,
     fontFamily: "Poppins_500Medium",
@@ -256,7 +257,7 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     backgroundColor: "#fff",
   },
-  priceLabel: { fontSize: 12, color: "#A2A5AD" },
+  priceLabel: { fontSize: 12, color: Theme.gray },
   price: {
     fontSize: 18,
     fontWeight: "600",
@@ -265,7 +266,7 @@ const styles = StyleSheet.create({
   },
   night: {
     fontSize: 15,
-    color: "#A2A5AD",
+    color: Theme.gray,
     fontWeight: "600",
     fontFamily: "Poppins_600SemiBold",
   },

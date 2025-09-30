@@ -7,6 +7,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
+import { Theme } from "../constants/theme";
 import { CustomText } from "../components/custom/CustomText";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -200,7 +201,7 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 15,
     textAlign: "center",
-    color: "#A2A5AD",
+    color: Theme.gray,
     lineHeight: 27,
     fontWeight: "500",
     fontFamily: "Poppins-500Medium",
@@ -220,9 +221,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#D0D0D0",
     marginHorizontal: 4,
   },
-  dotActive: { backgroundColor: "#4B75E9", width: 20, borderRadius: 10 },
+  dotActive: { backgroundColor: Theme.primary, width: 20, borderRadius: 10 },
   nextBtn: {
-    backgroundColor: "#4B75E9",
+    backgroundColor: Theme.primary,
     width: 48,
     height: 48,
     borderRadius: 24,

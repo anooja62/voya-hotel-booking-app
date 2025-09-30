@@ -9,6 +9,7 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
 import CustomHeader from "../components/custom/CustomHeader";
+import { Theme } from "../constants/theme";
 const Favorites = () => {
   const favorites = [
     {
@@ -63,7 +64,7 @@ const Favorites = () => {
         <CustomText style={styles.price}>{item.price}</CustomText>
         <CustomText style={styles.month}>/month</CustomText>
         <TouchableOpacity style={{ marginLeft: "auto" }}>
-          <Ionicons name="heart" size={20} color="#4B75E9" />
+          <Ionicons name="heart" size={20} color={Theme.primary} />
         </TouchableOpacity>
       </View>
     </View>
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
   },
   location: {
     fontSize: 12,
-    color: "#A2A5AD",
+    color: Theme.gray,
     marginBottom: 6,
   },
   row: {
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
   },
   month: {
     fontSize: 15,
-    color: "#A2A5AD",
+    color: Theme.gray,
     marginLeft: 2,
     fontWeight: "600",
     fontFamily: "Poppins_600SemiBold",

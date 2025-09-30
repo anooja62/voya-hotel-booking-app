@@ -14,6 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
+import { Theme } from "../constants/theme";
 const hotels = [
   {
     id: "1",
@@ -59,7 +60,7 @@ const Search = () => {
           <TextInput
             style={styles.input}
             placeholder="Enter Location"
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
           />
         </View>
 
@@ -70,7 +71,7 @@ const Search = () => {
             <TextInput
               placeholder="Check-in"
               style={styles.input}
-              placeholderTextColor="#A2A5AD"
+              placeholderTextColor={Theme.gray}
             />
           </View>
           <View style={[styles.inputRow, styles.rowItem]}>
@@ -78,7 +79,7 @@ const Search = () => {
             <TextInput
               placeholder="Check-out"
               style={styles.input}
-              placeholderTextColor="#A2A5AD"
+              placeholderTextColor={Theme.gray}
             />
           </View>
         </View>
@@ -90,7 +91,7 @@ const Search = () => {
             <TextInput
               placeholder="2 Guests"
               style={styles.input}
-              placeholderTextColor="#A2A5AD"
+              placeholderTextColor={Theme.gray}
             />
           </View>
           <View style={[styles.inputRow, styles.rowItem]}>
@@ -98,7 +99,7 @@ const Search = () => {
             <TextInput
               placeholder="1 Room"
               style={styles.input}
-              placeholderTextColor="#A2A5AD"
+              placeholderTextColor={Theme.gray}
             />
           </View>
         </View>
@@ -236,7 +237,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_600SemiBold",
     lineHeight: 27,
   },
-  link: { fontSize: 16, color: "#4B75E9", fontWeight: "500" },
+  link: { fontSize: 16, color: Theme.primary, fontWeight: "500" },
 
   // Hotel Cards
   hotelCard: {

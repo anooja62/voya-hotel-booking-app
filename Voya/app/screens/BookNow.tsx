@@ -16,7 +16,7 @@ import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
 import PrimaryButton from "../components/custom/PrimaryButton";
 import CustomHeader from "../components/custom/CustomHeader";
-
+import { Theme } from "../constants/theme";
 type BookNowRouteProp = RouteProp<RootStackParamList, "BookNow">;
 
 const BookNow = () => {
@@ -169,7 +169,7 @@ const BookNow = () => {
               keyboardType="numeric"
               style={styles.input}
               placeholder="Guests"
-              placeholderTextColor="#A2A5AD"
+              placeholderTextColor={Theme.gray}
               onFocus={() => setIsGuestFocused(true)}
               onBlur={() => setIsGuestFocused(false)}
             />
@@ -191,7 +191,7 @@ const BookNow = () => {
               keyboardType="numeric"
               style={styles.input}
               placeholder="Rooms"
-              placeholderTextColor="#A2A5AD"
+              placeholderTextColor={Theme.gray}
               onFocus={() => setIsRoomFocused(true)}
               onBlur={() => setIsRoomFocused(false)}
             />
@@ -479,7 +479,7 @@ const styles = StyleSheet.create({
   },
 
   disabledDayText: {
-    color: "#A2A5AD",
+    color: Theme.gray,
   },
 
   backButton: {
@@ -536,7 +536,7 @@ const styles = StyleSheet.create({
     color: "#000",
   },
 
-  location: { fontSize: 12, color: "#A2A5AD", marginVertical: 2 },
+  location: { fontSize: 12, color: Theme.gray, marginVertical: 2 },
   price: {
     fontSize: 18,
     fontWeight: "700",

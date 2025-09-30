@@ -5,6 +5,7 @@ import { CustomText } from "../components/custom/CustomText";
 import CustomHeader from "../components/custom/CustomHeader";
 import PrimaryButton from "../components/custom/PrimaryButton";
 import { useNavigation } from "@react-navigation/native";
+import { Theme } from "../constants/theme";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 const GuestInfo = () => {
@@ -21,24 +22,24 @@ const GuestInfo = () => {
       {/* Content area */}
       <View style={styles.content}>
         <View style={styles.inputBox}>
-          <Ionicons name="person-outline" size={18} color="#A2A5AD" />
+          <Ionicons name="person-outline" size={18} color={Theme.gray} />
           <TextInput
             style={styles.input}
             value={name}
             onChangeText={setName}
             placeholder="Name"
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
           />
         </View>
 
         <View style={styles.inputBox}>
-          <Ionicons name="mail-outline" size={18} color="#A2A5AD" />
+          <Ionicons name="mail-outline" size={18} color={Theme.gray} />
           <TextInput
             style={styles.input}
             value={email}
             onChangeText={setEmail}
             placeholder="Email"
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
             keyboardType="email-address"
           />
         </View>
@@ -53,7 +54,7 @@ const GuestInfo = () => {
             value={phone}
             onChangeText={setPhone}
             placeholder="Phone"
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
             keyboardType="phone-pad"
           />
         </View>

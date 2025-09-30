@@ -13,7 +13,7 @@ import { CustomText } from "../components/custom/CustomText";
 import CustomHeader from "../components/custom/CustomHeader";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import PrimaryButton from "../components/custom/PrimaryButton";
-
+import { Theme } from "../constants/theme";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 const Receipt = () => {
@@ -99,7 +99,7 @@ const Receipt = () => {
         </View>
         <View style={styles.detailRow}>
           <CustomText style={styles.label}>Payment Method</CustomText>
-          <CustomText style={[styles.value, { color: "#4B75E9" }]}>
+          <CustomText style={[styles.value, { color: Theme.primary }]}>
             Cash
           </CustomText>
         </View>
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   rating: { fontSize: 13, marginLeft: 4 },
   location: {
     fontSize: 13,
-    color: "#A2A5AD",
+    color: Theme.gray,
     marginTop: 2,
     fontFamily: "Poppins_500Medium",
   },
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: "#A2A5AD",
+    color: Theme.gray,
     fontWeight: "600",
     fontFamily: "Poppins_600SemiBold",
     lineHeight: 25,
@@ -243,9 +243,9 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   backBtn: { backgroundColor: "#EFF3FE" },
-  downloadBtn: { backgroundColor: "#4B75E9" },
+  downloadBtn: { backgroundColor: Theme.primary },
   backText: {
-    color: "#4B75E9",
+    color: Theme.primary,
     fontWeight: "600",
     fontFamily: "Poppins_600SemiBold",
   },

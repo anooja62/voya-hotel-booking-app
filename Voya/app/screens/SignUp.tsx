@@ -14,6 +14,8 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
 import PrimaryButton from "../components/custom/PrimaryButton";
+import { Theme } from "../constants/theme";
+
 const SignUp = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isChecked, setChecked] = useState(false);
@@ -41,7 +43,7 @@ const SignUp = () => {
           <TextInput
             placeholder="Enter Full name"
             style={styles.input}
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
           />
         </View>
 
@@ -51,7 +53,7 @@ const SignUp = () => {
             placeholder="Enter email address"
             keyboardType="email-address"
             style={styles.input}
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
           />
         </View>
 
@@ -61,7 +63,7 @@ const SignUp = () => {
             placeholder="Create Password"
             secureTextEntry={!passwordVisible}
             style={styles.input}
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
           />
           <Pressable onPress={() => setPasswordVisible(!passwordVisible)}>
             <Ionicons
@@ -77,7 +79,7 @@ const SignUp = () => {
           <Checkbox
             value={isChecked}
             onValueChange={setChecked}
-            color="#4B75E9"
+            color={Theme.primary}
           />
           <CustomText style={styles.checkboxText}>
             I agree to the <CustomText style={styles.link}>Terms</CustomText>{" "}
@@ -159,7 +161,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 14,
-    color: "#A2A5AD",
+    color: Theme.gray,
     textAlign: "center",
     marginBottom: 30,
     fontWeight: "500",

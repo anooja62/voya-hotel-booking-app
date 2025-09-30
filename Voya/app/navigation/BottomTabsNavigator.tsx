@@ -9,7 +9,7 @@ import Search from "../screens/Search";
 import Favorites from "../screens/Favorites";
 import Profile from "../screens/Profile";
 import Calendar from "../screens/Calendar";
-
+import { Theme } from "../constants/theme";
 const Tab = createBottomTabNavigator();
 
 const BottomTabsNavigator = () => {
@@ -26,7 +26,7 @@ const BottomTabsNavigator = () => {
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: "#4F6DFF",
-        tabBarInactiveTintColor: "gray",
+        tabBarInactiveTintColor: Theme.gray,
         headerShown: false,
       })}
     >

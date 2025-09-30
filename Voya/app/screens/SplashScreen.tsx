@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
+import { Theme } from "../constants/theme";
 type SplashNavProp = NativeStackNavigationProp<RootStackParamList, "Splash">;
 
 export default function SplashScreen() {
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_700Bold",
   },
   brandV: {
-    color: "#4B75E9",
+    color: Theme.primary,
     fontWeight: "700",
     fontFamily: "Poppins_700Bold",
   },

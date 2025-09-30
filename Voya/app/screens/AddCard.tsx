@@ -13,17 +13,18 @@ import { Ionicons } from "@expo/vector-icons";
 import PrimaryButton from "../components/custom/PrimaryButton";
 import { useNavigation } from "@react-navigation/native";
 import CustomHeader from "../components/custom/CustomHeader";
+import { Theme } from "../constants/theme";
 const AddCard = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [cardHolder, setCardHolder] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");
   const [calendarVisible, setCalendarVisible] = useState(false);
-  const [successVisible, setSuccessVisible] = useState(false); // ✅ Success modal state
+  const [successVisible, setSuccessVisible] = useState(false);
   const navigation = useNavigation();
 
   const today = new Date();
-  const [currentMonth, setCurrentMonth] = useState(today.getMonth()); // 0 = Jan
+  const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
 
   return (
@@ -59,22 +60,22 @@ const AddCard = () => {
 
         {/* Inputs */}
         <View style={styles.inputBox}>
-          <Ionicons name="person-outline" size={18} color="#A2A5AD" />
+          <Ionicons name="person-outline" size={18} color={Theme.gray} />
           <TextInput
             style={styles.input}
             placeholder="Card Holder"
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
             value={cardHolder}
             onChangeText={setCardHolder}
           />
         </View>
 
         <View style={styles.inputBox}>
-          <Ionicons name="card-outline" size={18} color="#A2A5AD" />
+          <Ionicons name="card-outline" size={18} color={Theme.gray} />
           <TextInput
             style={styles.input}
             placeholder="Card Number"
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
             keyboardType="numeric"
             value={cardNumber}
             onChangeText={setCardNumber}
@@ -83,7 +84,7 @@ const AddCard = () => {
 
         <View style={styles.row}>
           <View style={[styles.inputBox, { flex: 1, marginRight: 12 }]}>
-            <Ionicons name="calendar-outline" size={18} color="#A2A5AD" />
+            <Ionicons name="calendar-outline" size={18} color={Theme.gray} />
             <TouchableOpacity
               style={{ flex: 1 }}
               onPress={() => setCalendarVisible(true)}
@@ -93,7 +94,7 @@ const AddCard = () => {
                   styles.input,
                   {
                     paddingVertical: 14,
-                    color: expiryDate ? "#000" : "#A2A5AD",
+                    color: expiryDate ? "#000" : Theme.gray,
                   },
                 ]}
               >
@@ -103,11 +104,11 @@ const AddCard = () => {
           </View>
 
           <View style={[styles.inputBox, { flex: 1 }]}>
-            <Ionicons name="lock-closed-outline" size={18} color="#A2A5AD" />
+            <Ionicons name="lock-closed-outline" size={18} color={Theme.gray} />
             <TextInput
               style={styles.input}
               placeholder="CVV"
-              placeholderTextColor="#A2A5AD"
+              placeholderTextColor={Theme.gray}
               keyboardType="numeric"
               secureTextEntry
               value={cvv}

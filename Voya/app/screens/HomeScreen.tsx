@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
 import PrimaryButton from "../components/custom/PrimaryButton";
-
+import { Theme } from "../constants/theme";
 export default function HomeScreen() {
   type HomeNavProp = NativeStackNavigationProp<RootStackParamList, "Home">;
   const navigation = useNavigation<HomeNavProp>();
@@ -29,7 +29,7 @@ export default function HomeScreen() {
         >
           <CustomText style={styles.logo}>
             <CustomText
-              style={{ color: "#4B75E9", fontFamily: "Poppins_700Bold" }}
+              style={{ color: Theme.primary, fontFamily: "Poppins_700Bold" }}
             >
               V
             </CustomText>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 15,
-    color: "#A2A5AD",
+    color: Theme.gray,
     textAlign: "center",
     marginBottom: 20,
     lineHeight: 22,

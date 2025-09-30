@@ -3,7 +3,7 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
 import CustomHeader from "../components/custom/CustomHeader";
-
+import { Theme } from "../constants/theme";
 const Profile = () => {
   return (
     <View style={styles.container}>
@@ -94,13 +94,13 @@ const styles = StyleSheet.create({
   },
   editText: {
     fontSize: 14,
-    color: "#4B75E9",
+    color: Theme.primary,
     fontWeight: "500",
     fontFamily: "Poppins_500Medium",
   },
   userEmail: {
     fontSize: 12,
-    color: "#A2A5AD",
+    color: Theme.gray,
     marginTop: 4,
   },
   sectionTitle: {

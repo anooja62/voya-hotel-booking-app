@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import CustomHeader from "../components/custom/CustomHeader";
+import { Theme } from "../constants/theme";
 const Calendar = () => {
   const [activeTab, setActiveTab] = useState("Upcoming");
   type CalendarProp = NativeStackNavigationProp<RootStackParamList, "Tabs">;
@@ -114,7 +115,7 @@ const Calendar = () => {
         />
       ) : (
         <View style={styles.emptyState}>
-          <Ionicons name="calendar-outline" size={60} color="#A2A5AD" />
+          <Ionicons name="calendar-outline" size={60} color={Theme.gray} />
           {activeTab === "Completed" && (
             <>
               <CustomText style={styles.emptyTitle}>
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_600SemiBold",
   },
   activeTabText: {
-    color: "#4B75E9",
+    color: Theme.primary,
     fontWeight: "700",
     fontFamily: "Poppins_700Bold",
   },
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
   },
   location: {
     fontSize: 14,
-    color: "#A2A5AD",
+    color: Theme.gray,
     fontWeight: "400",
   },
   priceRow: {
@@ -206,7 +207,7 @@ const styles = StyleSheet.create({
   month: {
     fontSize: 13,
     fontWeight: "500",
-    color: "#A2A5AD",
+    color: Theme.gray,
     marginLeft: 2,
     fontFamily: "Poppins_500Medium",
   },
@@ -252,7 +253,7 @@ const styles = StyleSheet.create({
 
   subText: {
     fontSize: 10,
-    color: "#A2A5AD",
+    color: Theme.gray,
     fontWeight: "600",
     fontFamily: " Poppins_600SemiBold",
   },
@@ -272,13 +273,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#EFF3FE",
   },
   cancelText: {
-    color: "#4B75E9",
+    color: Theme.primary,
     fontWeight: "600",
     fontSize: 16,
     fontFamily: "Poppins_600SemiBold",
   },
   receiptBtn: {
-    backgroundColor: "#4B75E9",
+    backgroundColor: Theme.primary,
   },
   receiptText: {
     color: "#F9F9F9",
@@ -301,7 +302,7 @@ const styles = StyleSheet.create({
   },
   emptySubtitle: {
     fontSize: 14,
-    color: "#A2A5AD",
+    color: Theme.gray,
     marginTop: 6,
     textAlign: "center",
     paddingHorizontal: 30,

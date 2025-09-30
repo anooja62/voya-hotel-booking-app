@@ -7,6 +7,7 @@ import {
   Pressable,
   Image,
 } from "react-native";
+import { Theme } from "../constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { Checkbox } from "expo-checkbox";
 import { useNavigation } from "@react-navigation/native";
@@ -39,7 +40,7 @@ const Login = () => {
             placeholder="Enter email address"
             keyboardType="email-address"
             style={styles.input}
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
             value={email}
             onChangeText={setEmail}
           />
@@ -51,7 +52,7 @@ const Login = () => {
             placeholder="Enter Password"
             secureTextEntry={!passwordVisible}
             style={styles.input}
-            placeholderTextColor="#A2A5AD"
+            placeholderTextColor={Theme.gray}
             value={password}
             onChangeText={setPassword}
           />
@@ -152,7 +153,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 14,
-    color: "#A2A5AD",
+    color: Theme.gray,
     textAlign: "center",
     marginBottom: 30,
     fontWeight: "500",
@@ -198,7 +199,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-500Medium",
   },
   link: {
-    color: "#4B75E9",
+    color: Theme.primary,
     fontWeight: "700",
     fontSize: 13,
     textDecorationLine: "underline",
