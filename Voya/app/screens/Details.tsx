@@ -85,7 +85,7 @@ const Details = () => {
           </View>
           <CustomText style={styles.location}>{hotel.location}</CustomText>
           <View style={styles.ratingRow}>
-            <Ionicons name="star" size={16} color="#FFD700" />
+            <Ionicons name="star" size={16} color={Theme.secondary} />
             <CustomText style={styles.rating}>{hotel.rating}</CustomText>
             <CustomText style={styles.reviews}>(1,092 Reviews)</CustomText>
           </View>
@@ -173,13 +173,13 @@ const styles = StyleSheet.create({
     top: 44,
     left: "50%",
     transform: [{ translateX: -30 }],
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontWeight: "600",
     fontFamily: Theme.bold,
   },
 
   // Content
-  content: { padding: 16 },
+  content: { padding: Theme.containerPadding },
   titleRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
   hotelName: {
     fontSize: 18,
     fontWeight: "700",
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: " Poppins_700Bold",
   },
   location: {
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: "700",
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: " Poppins_700Bold",
     marginBottom: 10,
   },

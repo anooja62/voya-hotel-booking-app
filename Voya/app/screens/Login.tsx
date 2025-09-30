@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 40,
     marginBottom: 8,
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: Theme.semiBold,
   },
   content: {
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
 
   signupText: {
     fontSize: 14,
-    color: "#181818",
+    color: Theme.textblack,
     fontWeight: "500",
     textAlign: "center",
     marginBottom: 10,

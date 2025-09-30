@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Theme.background,
-    padding: 16,
+    padding: Theme.containerPadding,
   },
 
   userInfo: {
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontWeight: "600",
     marginTop: 16,
     fontFamily: Theme.semiBold,

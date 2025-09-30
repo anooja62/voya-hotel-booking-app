@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 18,
     fontWeight: "700",
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: Theme.bold,
   },
 });

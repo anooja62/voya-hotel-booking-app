@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
 
   content: {
     flex: 1,
-    justifyContent: "center", // centers form vertically
+    justifyContent: "center",
   },
 
   title: {
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 40,
     marginBottom: 8,
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: Theme.semiBold,
   },
   subtitle: {
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
 
   loginText: {
     fontSize: 14,
-    color: "#181818",
+    color: Theme.textblack,
     fontWeight: "500",
     textAlign: "center",
     marginBottom: 10,

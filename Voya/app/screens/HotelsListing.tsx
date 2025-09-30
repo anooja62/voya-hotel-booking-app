@@ -56,7 +56,7 @@ const HotelListing = () => {
             <Image source={item.image} style={styles.image} />
             {/* Rating badge */}
             <View style={styles.ratingBadge}>
-              <Ionicons name="star" size={14} color="#FFD700" />
+              <Ionicons name="star" size={14} color={Theme.secondary} />
               <CustomText style={styles.ratingText}>{item.rating}</CustomText>
             </View>
 
@@ -85,7 +85,11 @@ const HotelListing = () => {
 export default HotelListing;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Theme.background, padding: 16 },
+  container: {
+    flex: 1,
+    backgroundColor: Theme.background,
+    padding: Theme.containerPadding,
+  },
   card: {
     flex: 1,
 

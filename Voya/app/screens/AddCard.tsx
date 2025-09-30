@@ -232,7 +232,11 @@ const AddCard = () => {
 export default AddCard;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Theme.background, padding: 16 },
+  container: {
+    flex: 1,
+    backgroundColor: Theme.background,
+    padding: Theme.containerPadding,
+  },
 
   cardPreview: {
     backgroundColor: "#4A6CF7",
@@ -277,7 +281,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: "center",
   },
-  addBtnText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  addBtnText: { color: "#fff", fontSize: Theme.largeText, fontWeight: "600" },
 
   modalOverlay: {
     flex: 1,
@@ -301,7 +305,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   successText: {
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontWeight: "700",
     marginBottom: 20,
     textAlign: "center",
@@ -325,12 +329,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 20,
   },
-  calendarTitle: { fontSize: 16, fontWeight: "600" },
+  calendarTitle: { fontSize: Theme.largeText, fontWeight: "600" },
   monthRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 20,
   },
-  monthText: { fontSize: 16, fontWeight: "500" },
+  monthText: { fontSize: Theme.largeText, fontWeight: "500" },
 });

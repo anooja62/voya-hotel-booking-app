@@ -1,5 +1,3 @@
-// constants/theme.ts
-
 export const Theme = {
   primary: "#4B75E9",
   secondary: "#FFD700",

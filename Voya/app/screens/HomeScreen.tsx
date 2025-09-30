@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     fontFamily: Theme.bold,
   },
   title: {
-    fontSize: 22,
+    fontSize: Theme.xxlargeText,
     fontWeight: "600",
     textAlign: "center",
     marginBottom: 8,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
 
   loginText: {
     fontSize: 14,
-    color: "#181818",
+    color: Theme.textblack,
     fontWeight: "500",
     textAlign: "center",
     marginBottom: 10,

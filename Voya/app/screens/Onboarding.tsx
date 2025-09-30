@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
   },
-  skip: { fontSize: 16, color: "#000" },
+  skip: { fontSize: Theme.largeText, color: "#000" },
   dots: { flexDirection: "row", alignItems: "center" },
   dot: {
     width: 8,

@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontWeight: "700",
     fontFamily: Theme.bold,
   },

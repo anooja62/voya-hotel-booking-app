@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   tagline: {
     marginTop: 8,
-    fontSize: 16,
+    fontSize: Theme.largeText,
     color: "#000000",
     fontWeight: "600",
     fontFamily: Theme.semiBold,

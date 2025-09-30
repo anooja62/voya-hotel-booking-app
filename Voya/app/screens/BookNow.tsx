@@ -104,7 +104,7 @@ const BookNow = () => {
           <View style={styles.nameRow}>
             <CustomText style={styles.hotelName}>{hotel.name}</CustomText>
             <View style={styles.ratingRow}>
-              <Ionicons name="star" size={14} color="#FFD700" />
+              <Ionicons name="star" size={14} color={Theme.secondary} />
               <CustomText style={styles.rating}>{hotel.rating}</CustomText>
             </View>
           </View>
@@ -252,7 +252,9 @@ const BookNow = () => {
                   style={styles.modalOption}
                   onPress={() => selectOption(item)}
                 >
-                  <CustomText style={{ fontSize: 16 }}>{item}</CustomText>
+                  <CustomText style={{ fontSize: Theme.largeText }}>
+                    {item}
+                  </CustomText>
                 </TouchableOpacity>
               )}
             />
@@ -471,7 +473,11 @@ const BookNow = () => {
 export default BookNow;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Theme.background, padding: 16 },
+  container: {
+    flex: 1,
+    backgroundColor: Theme.background,
+    padding: Theme.containerPadding,
+  },
 
   disabledDay: {
     backgroundColor: "transparent",
@@ -522,9 +528,9 @@ const styles = StyleSheet.create({
   },
   hotelImage: { width: 100, height: 100, borderRadius: 12 },
   hotelName: {
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontWeight: "700",
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: " Poppins_600SemiBold",
   },
   input: {
@@ -606,7 +612,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
 
-  calendarTitle: { fontSize: 16, fontWeight: "700" },
+  calendarTitle: { fontSize: Theme.largeText, fontWeight: "700" },
 
   monthRow: {
     flexDirection: "row",
@@ -615,7 +621,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
 
-  monthText: { fontSize: 16, fontWeight: "600" },
+  monthText: { fontSize: Theme.largeText, fontWeight: "600" },
 
   weekRow: {
     flexDirection: "row",
@@ -659,7 +665,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   modalTitle: {
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontWeight: "700",
     fontFamily: Theme.bold,
   },

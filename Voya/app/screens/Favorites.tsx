@@ -52,7 +52,7 @@ const Favorites = () => {
       <Image source={item.image} style={styles.image} />
       {/* Rating badge */}
       <View style={styles.ratingBadge}>
-        <Ionicons name="star" size={14} color="#FFD700" />
+        <Ionicons name="star" size={14} color={Theme.secondary} />
         <CustomText style={styles.ratingText}>{item.rating}</CustomText>
       </View>
 
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Theme.background,
-    padding: 16,
+    padding: Theme.containerPadding,
   },
 
   card: {

@@ -137,7 +137,7 @@ const Search = () => {
             >
               <Image source={item.image} style={styles.hotelImage} />
               <View style={styles.ratingBadge}>
-                <Ionicons name="star" size={14} color="#FFD700" />
+                <Ionicons name="star" size={14} color={Theme.secondary} />
                 <CustomText style={styles.ratingText}>{item.rating}</CustomText>
               </View>
               <CustomText style={styles.hotelName}>{item.name}</CustomText>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Theme.background,
-    padding: 16,
+    padding: Theme.containerPadding,
     paddingTop: 60,
   },
 
@@ -185,10 +185,9 @@ const styles = StyleSheet.create({
     color: "#000000",
   },
 
-  // Search Box
   searchBox: {
     backgroundColor: "#fff",
-    padding: 16,
+    padding: Theme.containerPadding,
     borderRadius: 16,
     shadowColor: "#000",
     shadowOpacity: 0.05,
@@ -221,7 +220,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 10,
   },
-  searchText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  searchText: { color: "#fff", fontSize: Theme.largeText, fontWeight: "600" },
 
   // Popular Section
   popularHeader: {
@@ -231,13 +230,13 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   sectionTitle: {
-    fontSize: 22,
+    fontSize: Theme.xxlargeText,
     fontWeight: "600",
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: Theme.semiBold,
     lineHeight: 27,
   },
-  link: { fontSize: 16, color: Theme.primary, fontWeight: "500" },
+  link: { fontSize: Theme.largeText, color: Theme.primary, fontWeight: "500" },
 
   // Hotel Cards
   hotelCard: {

@@ -42,7 +42,7 @@ const Receipt = () => {
             <View style={styles.nameRow}>
               <CustomText style={styles.hotelName}>Elysium Gardens</CustomText>
               <View style={styles.ratingRow}>
-                <Ionicons name="star" size={14} color="#FFD700" />
+                <Ionicons name="star" size={14} color={Theme.secondary} />
                 <CustomText style={styles.rating}>4.5</CustomText>
               </View>
             </View>
@@ -170,7 +170,11 @@ const Receipt = () => {
 export default Receipt;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Theme.background, padding: 16 },
+  container: {
+    flex: 1,
+    backgroundColor: Theme.background,
+    padding: Theme.containerPadding,
+  },
   hotelCard: {
     flexDirection: "row",
     padding: 12,
@@ -185,7 +189,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   hotelName: {
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontWeight: "600",
     fontFamily: Theme.semiBold,
   },
@@ -209,7 +213,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginTop: 20,
     marginBottom: 8,
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: Theme.bold,
   },
   detailRow: {
@@ -271,7 +275,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "700",
     marginVertical: 12,
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: Theme.bold,
   },
   doneBtn: { marginTop: 12 },

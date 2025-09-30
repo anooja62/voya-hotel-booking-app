@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Theme.background,
-    padding: 16,
+    padding: Theme.containerPadding,
   },
   content: {
     flex: 1,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   switchLabel: {
     fontSize: 14,
-    color: "#181818",
+    color: Theme.textblack,
     fontWeight: "700",
     fontFamily: Theme.bold,
   },

@@ -147,8 +147,8 @@ export default Calendar;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    padding: 16,
+    backgroundColor: Theme.background,
+    padding: Theme.containerPadding,
   },
 
   tabs: {
@@ -159,9 +159,9 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   tabText: {
-    fontSize: 16,
+    fontSize: Theme.largeText,
     paddingVertical: 8,
-    color: "#181818",
+    color: Theme.textblack,
     fontWeight: "600",
     fontFamily: Theme.semiBold,
   },
@@ -190,9 +190,9 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   name: {
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontWeight: "700",
-    color: "#181818",
+    color: Theme.textblack,
     fontFamily: Theme.bold,
   },
   location: {
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
   cancelText: {
     color: Theme.primary,
     fontWeight: "600",
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontFamily: Theme.semiBold,
   },
   receiptBtn: {
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
   receiptText: {
     color: Theme.background,
     fontWeight: "700",
-    fontSize: 16,
+    fontSize: Theme.largeText,
     fontFamily: Theme.bold,
   },
   emptyState: {
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
   emptyTitle: {
     fontSize: 18,
     fontWeight: "700",
-    color: "#181818",
+    color: Theme.textblack,
     marginTop: 12,
     fontFamily: Theme.bold,
   },

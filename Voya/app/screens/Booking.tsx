@@ -24,7 +24,7 @@ const Booking = () => {
         <View style={styles.hotelInfo}>
           <CustomText style={styles.hotelName}>Elysium Gardens</CustomText>
           <View style={styles.ratingRow}>
-            <Ionicons name="star" size={14} color="#FFD700" />
+            <Ionicons name="star" size={14} color={Theme.secondary} />
             <CustomText style={styles.rating}>4.5</CustomText>
           </View>
           <CustomText style={styles.location}>Paris, France</CustomText>
@@ -99,7 +99,11 @@ const Booking = () => {
 export default Booking;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: Theme.background, padding: 16 },
+  container: {
+    flex: 1,
+    backgroundColor: Theme.background,
+    padding: Theme.containerPadding,
+  },
 
   // Hotel Card
   hotelCard: {
@@ -115,11 +119,11 @@ const styles = StyleSheet.create({
   },
   hotelImage: { width: 90, height: 90, borderRadius: 12, marginRight: 12 },
   hotelInfo: { flex: 1 },
-  hotelName: { fontSize: 16, fontWeight: "700" },
+  hotelName: { fontSize: Theme.largeText, fontWeight: "700" },
   location: { fontSize: 13, color: "#888", marginVertical: 4 },
   ratingRow: { flexDirection: "row", alignItems: "center", marginVertical: 2 },
   rating: { marginLeft: 4, fontSize: 13, fontWeight: "600" },
-  price: { fontSize: 16, fontWeight: "700", color: "#000" },
+  price: { fontSize: Theme.largeText, fontWeight: "700", color: "#000" },
   perMonth: { fontSize: 13, fontWeight: "400", color: "#888" },
 
   // Divider
@@ -148,5 +152,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 30,
   },
-  continueText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  continueText: { color: "#fff", fontSize: Theme.largeText, fontWeight: "600" },
 });
