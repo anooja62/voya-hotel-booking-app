@@ -5,14 +5,16 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Dimensions,
 } from "react-native";
+import Carousel from "react-native-reanimated-carousel";
 import { Ionicons } from "@expo/vector-icons";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import PrimaryButton from "../components/custom/PrimaryButton";
 import { CustomText } from "../components/custom/CustomText";
-
+const { width } = Dimensions.get("window");
 type DetailsRouteProp = RouteProp<RootStackParamList, "Details">;
 type DetailsNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -22,12 +24,17 @@ type DetailsNavigationProp = NativeStackNavigationProp<
 const Details = () => {
   const navigation = useNavigation<DetailsNavigationProp>();
 
+  const [index, setIndex] = useState(0);
   const route = useRoute<DetailsRouteProp>();
   const { hotel } = route.params;
 
   const [expanded, setExpanded] = useState(false);
+  const images = [
+    hotel.image,
+    require("../../assets/images/hotel/hotel1.jpeg"),
+    require("../../assets/images/hotel/hotel2.jpeg"),
+  ];
 
-  // Example description (you can replace with hotel.description if you have it)
   const description =
     "Lorem ipsum dolor sit amet consectetur. Lectus dictum ut nunc sodales a. Nibh tortor malesuada amet malesuada. Nulla facilisi. Duis at lorem vel nisi fermentum volutpat sit amet in purus. Sed mattis dolor a sapien ultricies, non consequat magna sagittis.";
 
@@ -39,7 +46,16 @@ const Details = () => {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Hotel Image */}
         <View style={styles.imageContainer}>
-          <Image source={hotel.image} style={styles.image} />
+          <Carousel
+            width={width}
+            height={400}
+            data={images}
+            autoPlay
+            onSnapToItem={(i) => setIndex(i)}
+            renderItem={({ item }) => (
+              <Image source={item} style={styles.image} />
+            )}
+          />
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => navigation.goBack()}
@@ -47,6 +63,17 @@ const Details = () => {
             <Ionicons name="chevron-back" size={22} color="#000" />
           </TouchableOpacity>
           <CustomText style={styles.headerTitle}>Details</CustomText>
+          <View style={styles.indicatorContainer}>
+            {images.map((_, i) => (
+              <View
+                key={i}
+                style={[
+                  styles.indicator,
+                  i === index && styles.activeIndicator,
+                ]}
+              />
+            ))}
+          </View>
         </View>
 
         {/* Hotel Info */}
@@ -241,5 +268,22 @@ const styles = StyleSheet.create({
     color: "#A2A5AD",
     fontWeight: "600",
     fontFamily: "Poppins_600SemiBold",
+  },
+  indicatorContainer: {
+    position: "absolute",
+    bottom: 16,
+    left: 16,
+    flexDirection: "row",
+    gap: 6,
+  },
+  indicator: {
+    width: 20,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: "#ccc",
+  },
+  activeIndicator: {
+    backgroundColor: "#fff",
+    width: 28,
   },
 });

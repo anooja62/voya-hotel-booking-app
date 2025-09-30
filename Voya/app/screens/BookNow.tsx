@@ -387,8 +387,22 @@ const BookNow = () => {
                 setModalVisible(false);
               }}
             >
-              <Ionicons name="cash-outline" size={20} color="#4A6CF7" />
-              <CustomText style={styles.optionText}>Cash</CustomText>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Ionicons name="cash-outline" size={20} color="#4A6CF7" />
+                <CustomText
+                  style={[
+                    styles.optionText,
+                    {
+                      fontWeight: "700",
+                      fontFamily: "Poppins_700Bold",
+                      marginLeft: 8,
+                    },
+                  ]}
+                >
+                  Cash
+                </CustomText>
+              </View>
+
               <View style={styles.radioCircle}>
                 {payment === "Cash" && <View style={styles.radioDot} />}
               </View>
@@ -405,11 +419,25 @@ const BookNow = () => {
                 setModalVisible(false);
               }}
             >
-              <Image
-                source={require("../../assets/images/mastercard.png")}
-                style={styles.cardIcon}
-              />
-              <CustomText style={styles.optionText}>Mastercard</CustomText>
+              <View
+                style={{
+                  flexDirection: "row",
+                }}
+              >
+                <Image
+                  source={require("../../assets/images/mastercard.png")}
+                  style={styles.cardIcon}
+                />
+                <CustomText
+                  style={[
+                    styles.optionText,
+                    { fontWeight: "700", fontFamily: "Poppins_700Bold" },
+                  ]}
+                >
+                  Mastercard
+                </CustomText>
+              </View>
+
               <View style={styles.radioCircle}>
                 {payment === "Mastercard" && <View style={styles.radioDot} />}
               </View>
@@ -649,14 +677,16 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 12,
     marginBottom: 10,
+    //flex: 1,
+    justifyContent: "space-between",
   },
   optionText: {
     fontSize: 14,
     marginLeft: 8,
     //flex: 1,
     color: "#000",
-    fontWeight: "700",
-    fontFamily: "Poppins_700Bold",
+    fontWeight: "400",
+    // fontFamily: "Poppins_700Bold",
   },
   cardIcon: { width: 24, height: 18, resizeMode: "contain", marginRight: 8 },
   radioCircle: {

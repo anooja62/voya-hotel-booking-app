@@ -104,13 +104,21 @@ const Search = () => {
         </View>
 
         {/* Button */}
-        <PrimaryButton title="Search" />
+        <PrimaryButton
+          title="Search"
+          onPress={() => navigation.navigate("HotelsListing")}
+        />
       </View>
 
       {/* Popular Hotels */}
       <View style={styles.popularHeader}>
         <CustomText style={styles.sectionTitle}>Popular Hotel</CustomText>
-        <CustomText style={styles.link}>View All</CustomText>
+        <CustomText
+          style={styles.link}
+          onPress={() => navigation.navigate("HotelsListing")}
+        >
+          View All
+        </CustomText>
       </View>
 
       <View style={{ height: 200 }}>
