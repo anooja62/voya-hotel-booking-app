@@ -4,16 +4,30 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Modal,
+  Text,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
 import CustomHeader from "../components/custom/CustomHeader";
+import { useRoute, useNavigation } from "@react-navigation/native";
+import PrimaryButton from "../components/custom/PrimaryButton";
 
+import type { RootStackParamList } from "../navigation/StackNavigator";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 const Receipt = () => {
+  const route = useRoute();
+  type ReceiptProp = NativeStackNavigationProp<RootStackParamList, "Receipt">;
+  const navigation = useNavigation<ReceiptProp>();
+  const [successVisible, setSuccessVisible] = useState(false);
+
+  const { mode } = route.params as { mode: "receipt" | "payment" };
+
   return (
     <View style={styles.container}>
-      <CustomHeader title="E-Receipt" />
+      <CustomHeader title={mode === "receipt" ? "E-Receipt" : "Booking Info"} />
+
       <ScrollView
         contentContainerStyle={{ paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
@@ -24,9 +38,7 @@ const Receipt = () => {
             source={require("../../assets/images/hotel/hotel1.jpeg")}
             style={styles.hotelImage}
           />
-
           <View style={styles.hotelInfo}>
-            {/* Name + Rating in one row */}
             <View style={styles.nameRow}>
               <CustomText style={styles.hotelName}>Elysium Gardens</CustomText>
               <View style={styles.ratingRow}>
@@ -34,9 +46,7 @@ const Receipt = () => {
                 <CustomText style={styles.rating}>4.5</CustomText>
               </View>
             </View>
-
             <CustomText style={styles.location}>Paris, France</CustomText>
-
             <CustomText style={styles.price}>
               $349,7 <CustomText style={styles.per}>/month</CustomText>
             </CustomText>
@@ -80,35 +90,79 @@ const Receipt = () => {
           <CustomText style={styles.value}>$1,500</CustomText>
         </View>
         <View style={styles.detailRow}>
-          <CustomText style={styles.label}>Check In</CustomText>
+          <CustomText style={styles.label}>Tax</CustomText>
           <CustomText style={styles.value}>$3.15</CustomText>
         </View>
         <View style={styles.detailRow}>
-          <CustomText style={styles.label}>Check Out</CustomText>
-          <CustomText style={styles.value}>1,503.15</CustomText>
+          <CustomText style={styles.label}>Total</CustomText>
+          <CustomText style={styles.value}>$1,503.15</CustomText>
         </View>
         <View style={styles.detailRow}>
-          <CustomText style={styles.label}>Payment Methods</CustomText>
+          <CustomText style={styles.label}>Payment Method</CustomText>
           <CustomText style={[styles.value, { color: "#4B75E9" }]}>
             Cash
           </CustomText>
         </View>
 
-        <Image
-          source={require("../../assets/images/barcode.png")} // 👈 put your barcode image in assets
-          style={styles.barcode}
-        />
+        {mode === "receipt" && (
+          <>
+            <Image
+              source={require("../../assets/images/barcode.png")}
+              style={styles.barcode}
+            />
+            <View style={styles.actions}>
+              <TouchableOpacity
+                style={[styles.btn, styles.backBtn]}
+                onPress={() => navigation.navigate("Search")}
+              >
+                <CustomText style={styles.backText}>Back to Home</CustomText>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.btn, styles.downloadBtn]}>
+                <CustomText style={styles.downloadText}>Download</CustomText>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
 
-        {/* Actions */}
-        <View style={styles.actions}>
-          <TouchableOpacity style={[styles.btn, styles.backBtn]}>
-            <CustomText style={styles.backText}>Back to Home</CustomText>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.btn, styles.downloadBtn]}>
-            <CustomText style={styles.downloadText}>Download</CustomText>
-          </TouchableOpacity>
-        </View>
+        {mode === "payment" && (
+          <View style={{ marginTop: 20 }}>
+            <PrimaryButton
+              title="Pay $259.15"
+              onPress={() => setSuccessVisible(true)}
+            />
+          </View>
+        )}
       </ScrollView>
+
+      {/* ✅ Success Modal */}
+      <Modal
+        visible={successVisible}
+        animationType="slide"
+        transparent
+        onRequestClose={() => setSuccessVisible(false)}
+      >
+        <TouchableOpacity
+          style={styles.modalOverlay}
+          activeOpacity={1}
+          onPressOut={() => setSuccessVisible(false)}
+        >
+          <View style={styles.successModal}>
+            <View style={styles.iconCircle}>
+              <Ionicons name="checkmark-circle" size={60} color="#4A6CF7" />
+            </View>
+            <Text style={styles.successText}>Payment Successful</Text>
+
+            <PrimaryButton
+              title="Done"
+              style={styles.doneBtn}
+              onPress={() => {
+                setSuccessVisible(false);
+                navigation.navigate("Receipt", { mode: "receipt" });
+              }}
+            />
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 };
@@ -117,15 +171,25 @@ export default Receipt;
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff", padding: 16 },
-
-  hotelRow: { flexDirection: "row", marginBottom: 20 },
-  image: { width: 80, height: 80, borderRadius: 10, marginRight: 12 },
+  hotelCard: {
+    flexDirection: "row",
+    padding: 12,
+    borderRadius: 16,
+    marginBottom: 12,
+  },
+  hotelImage: { width: 100, height: 100, borderRadius: 12 },
+  hotelInfo: { flex: 1, marginLeft: 12, justifyContent: "space-between" },
+  nameRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
   hotelName: {
     fontSize: 16,
     fontWeight: "600",
     fontFamily: "Poppins_600SemiBold",
   },
-
+  ratingRow: { flexDirection: "row", alignItems: "center" },
   rating: { fontSize: 13, marginLeft: 4 },
   location: {
     fontSize: 13,
@@ -133,13 +197,13 @@ const styles = StyleSheet.create({
     marginTop: 2,
     fontFamily: "Poppins_500Medium",
   },
-  priceRow: { flexDirection: "row", alignItems: "flex-end", marginTop: 6 },
-  price: {
-    fontSize: 18,
-    fontWeight: "600",
+  price: { fontSize: 18, fontWeight: "600", fontFamily: "Poppins_600SemiBold" },
+  per: {
+    fontSize: 12,
+    fontWeight: "400",
+    color: "#888",
     fontFamily: "Poppins_600SemiBold",
   },
-  month: { fontSize: 13, color: "#A2A5AD", marginLeft: 2 },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "700",
@@ -160,17 +224,13 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_600SemiBold",
     lineHeight: 25,
   },
-  value: {
-    fontSize: 14,
-    color: "#000000",
-  },
+  value: { fontSize: 14, color: "#000" },
   barcode: {
     width: "100%",
     height: 60,
     resizeMode: "contain",
     marginVertical: 20,
   },
-
   actions: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -194,36 +254,25 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontFamily: "Poppins_700Bold",
   },
-  hotelCard: {
-    flexDirection: "row",
-    padding: 12,
-    borderRadius: 16,
-    marginBottom: 12,
-  },
-  nameRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  ratingRow: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  divider: {
-    height: 1,
-    backgroundColor: "#E0E0E0",
-    marginBottom: 20,
-  },
-  hotelImage: { width: 100, height: 100, borderRadius: 12 },
-  hotelInfo: {
+  modalOverlay: {
     flex: 1,
-    marginLeft: 12,
-    justifyContent: "space-between",
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "flex-end",
   },
-  per: {
-    fontSize: 12,
-    fontWeight: "400",
-    color: "#888",
-    fontFamily: " Poppins_600SemiBold",
+  successModal: {
+    backgroundColor: "#fff",
+    padding: 24,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    alignItems: "center",
   },
+  iconCircle: { marginBottom: 12 },
+  successText: {
+    fontSize: 18,
+    fontWeight: "700",
+    marginVertical: 12,
+    color: "#181818",
+    fontFamily: "Poppins_700Bold",
+  },
+  doneBtn: { marginTop: 12 },
 });

@@ -76,7 +76,7 @@ const Calendar = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.receiptBtn, styles.actionBtn]}
-          onPress={() => navigation.navigate("Receipt")}
+          onPress={() => navigation.navigate("Receipt", { mode: "receipt" })}
         >
           <CustomText style={styles.receiptText}>E-Receipt</CustomText>
         </TouchableOpacity>

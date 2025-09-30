@@ -20,7 +20,8 @@ export type RootStackParamList = {
   Login: undefined;
   Search: undefined;
   Tabs: undefined;
-  Receipt: undefined;
+  Receipt?: { mode: "receipt" | "payment" };
+
   AddCard: undefined;
   GuestInfo: undefined;
   Details: { hotel: any };
