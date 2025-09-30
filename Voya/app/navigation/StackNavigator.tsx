@@ -9,6 +9,7 @@ import Login from "../screens/Login";
 import Search from "../screens/Search";
 import Details from "../screens/Details";
 import BookNow from "../screens/BookNow";
+import Receipt from "../screens/Receipt";
 export type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
@@ -17,6 +18,7 @@ export type RootStackParamList = {
   Login: undefined;
   Search: undefined;
   Tabs: undefined;
+  Receipt: undefined;
   Details: { hotel: any };
   BookNow: { hotel: any };
 };
@@ -40,6 +42,7 @@ export default function StackNavigator() {
       <Stack.Screen name="Tabs" component={BottomTabsNavigator} />
       <Stack.Screen name="Details" component={Details} />
       <Stack.Screen name="BookNow" component={BookNow} />
+      <Stack.Screen name="Receipt" component={Receipt} />
     </Stack.Navigator>
   );
 }

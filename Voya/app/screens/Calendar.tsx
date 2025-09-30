@@ -8,10 +8,13 @@ import {
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "../components/custom/CustomText";
-
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../navigation/StackNavigator";
 const Calendar = () => {
   const [activeTab, setActiveTab] = useState("Upcoming");
-
+  type CalendarProp = NativeStackNavigationProp<RootStackParamList, "Tabs">;
+  const navigation = useNavigation<CalendarProp>();
   const bookings = [
     {
       id: "1",
@@ -70,7 +73,10 @@ const Calendar = () => {
         <TouchableOpacity style={[styles.cancelBtn, styles.actionBtn]}>
           <CustomText style={styles.cancelText}>Cancel</CustomText>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.receiptBtn, styles.actionBtn]}>
+        <TouchableOpacity
+          style={[styles.receiptBtn, styles.actionBtn]}
+          onPress={() => navigation.navigate("Receipt")}
+        >
           <CustomText style={styles.receiptText}>E-Receipt</CustomText>
         </TouchableOpacity>
       </View>
