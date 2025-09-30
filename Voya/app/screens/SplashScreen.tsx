@@ -36,11 +36,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   brand: {
-    fontSize: 40,
+    fontSize: 55,
     fontWeight: "700",
+    fontFamily: "Poppins_700Bold",
   },
   brandV: {
     color: "#4B75E9",
+    fontWeight: "700",
+    fontFamily: "Poppins_700Bold",
   },
   brandRest: {
     color: "#000000",
@@ -51,5 +54,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#000000",
     fontWeight: "600",
+    fontFamily: "Poppins_600SemiBold",
   },
 });

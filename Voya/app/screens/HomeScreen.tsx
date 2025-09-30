@@ -1,10 +1,11 @@
 // screens/HomeScreen.tsx
 import React from "react";
-import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
+import PrimaryButton from "../components/custom/PrimaryButton";
 
 export default function HomeScreen() {
   type HomeNavProp = NativeStackNavigationProp<RootStackParamList, "Home">;
@@ -15,7 +16,7 @@ export default function HomeScreen() {
       {/* Top Half - Image with overlay */}
       <View style={styles.topContainer}>
         <Image
-          source={require("../../assets/images/home/homebg.png")}
+          source={require("../../assets/images/home/homebg.webp")}
           style={styles.image}
         />
         <View style={styles.overlay} />
@@ -28,7 +29,7 @@ export default function HomeScreen() {
         >
           <CustomText style={styles.logo}>
             <CustomText
-              style={{ color: "#4F6DFF", fontFamily: "Poppins_400Regular" }}
+              style={{ color: "#4B75E9", fontFamily: "Poppins_700Bold" }}
             >
               V
             </CustomText>
@@ -42,12 +43,10 @@ export default function HomeScreen() {
             anytime, anywhere.
           </CustomText>
 
-          <TouchableOpacity
-            style={styles.registerButton}
+          <PrimaryButton
+            title="Register"
             onPress={() => navigation.navigate("Signup")}
-          >
-            <CustomText style={styles.registerText}>Register</CustomText>
-          </TouchableOpacity>
+          />
         </View>
 
         {/* Login text fixed at the bottom */}
@@ -87,49 +86,39 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 55,
-    fontWeight: "bold",
+    fontWeight: "700",
     marginBottom: 20,
-    fontFamily: "Poppins_400Regular",
+    fontFamily: "Poppins_700Bold",
   },
   title: {
     fontSize: 22,
     fontWeight: "600",
     textAlign: "center",
     marginBottom: 8,
-    fontFamily: "Poppins_400Regular",
+    fontFamily: "Poppins_600SemiBold",
   },
   subtitle: {
     fontSize: 15,
-    color: "#888",
+    color: "#A2A5AD",
     textAlign: "center",
     marginBottom: 20,
-  },
-  registerButton: {
-    backgroundColor: "#4B75E9",
-    paddingVertical: 14,
-    borderRadius: 30,
-    marginBottom: 16,
-    width: "100%",
-    alignItems: "center",
-  },
-
-  registerText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "700",
-    fontFamily: "Poppins-Regular",
+    lineHeight: 22,
+    fontWeight: "500",
+    fontFamily: "Poppins_500Medium",
   },
 
   loginText: {
     fontSize: 14,
-    color: "#000",
-    fontWeight: "600",
+    color: "#181818",
+    fontWeight: "500",
     textAlign: "center",
-    marginBottom: 10, // a little space from screen edge
+    marginBottom: 10,
+    fontFamily: "Poppins-500Medium",
   },
   loginLink: {
     color: "#4F6DFF",
     fontWeight: "700",
-    fontFamily: "Poppins-Regular",
+
+    fontFamily: "Poppins_700Bold",
   },
 });

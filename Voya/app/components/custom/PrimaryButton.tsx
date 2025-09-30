@@ -35,11 +35,13 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 30,
     alignItems: "center",
+    width: "100%",
     //marginBottom: 24,
   },
   text: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: "700",
+    fontFamily: "Poppins_700Bold",
   },
 });

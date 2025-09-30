@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
+import PrimaryButton from "../components/custom/PrimaryButton";
 const SignUp = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isChecked, setChecked] = useState(false);
@@ -76,18 +77,14 @@ const SignUp = () => {
           <Checkbox
             value={isChecked}
             onValueChange={setChecked}
-            color="#4F6DFF"
+            color="#4B75E9"
           />
           <CustomText style={styles.checkboxText}>
             I agree to the <CustomText style={styles.link}>Terms</CustomText>{" "}
             and <CustomText style={styles.link}>Privacy Policy</CustomText>
           </CustomText>
         </View>
-
-        {/* Register button */}
-        <TouchableOpacity style={styles.registerButton}>
-          <CustomText style={styles.registerText}>Register</CustomText>
-        </TouchableOpacity>
+        <PrimaryButton title="Register" onPress={() => {}} />
 
         {/* Divider */}
         <View style={styles.dividerContainer}>
@@ -157,6 +154,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 40,
     marginBottom: 8,
+    color: "#181818",
+    fontFamily: "Poppins_600SemiBold",
   },
   subtitle: {
     fontSize: 14,
@@ -164,6 +163,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 30,
     fontWeight: "500",
+    fontFamily: "Poppins-500Medium",
   },
 
   inputContainer: {
@@ -180,30 +180,30 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 8,
     fontSize: 14,
-    color: "#000", // black text
+    fontWeight: "500",
+    fontFamily: "Poppins-500Medium",
+    color: "#000",
   },
 
   checkboxContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 20,
-  },
-  checkboxText: { marginLeft: 8, fontSize: 13, color: "#555" },
-  link: { color: "#4F6DFF", fontWeight: "600" },
-
-  registerButton: {
-    backgroundColor: "#4F6DFF",
-    paddingVertical: 16,
-    borderRadius: 30,
-    alignItems: "center",
     marginBottom: 24,
   },
-  registerText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  checkboxText: {
+    marginLeft: 8,
+    fontSize: 13,
+    color: "#000000",
+    fontWeight: "500",
+    fontFamily: "Poppins-500Medium",
+  },
+  link: { color: "#4F6DFF", fontWeight: "700", fontFamily: "Poppins_700Bold" },
 
   dividerContainer: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 24,
+    marginTop: 24,
   },
   line: { flex: 1, height: 1, backgroundColor: "#ddd" },
   orText: {
@@ -228,14 +228,26 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
   },
-  socialText: { marginLeft: 8, fontSize: 12, color: "#333", fontWeight: "700" },
+  socialText: {
+    marginLeft: 8,
+    fontSize: 12,
+    color: "#333",
+    fontWeight: "700",
+    fontFamily: "Poppins_700Bold",
+  },
 
   loginText: {
     fontSize: 14,
+    color: "#181818",
+    fontWeight: "500",
     textAlign: "center",
-    color: "#000",
-    marginBottom: 20,
-    fontWeight: "600",
+    marginBottom: 10,
+    fontFamily: "Poppins-500Medium",
   },
-  loginLink: { color: "#4F6DFF", fontWeight: "700" },
+  loginLink: {
+    color: "#4F6DFF",
+    fontWeight: "700",
+
+    fontFamily: "Poppins_700Bold",
+  },
 });

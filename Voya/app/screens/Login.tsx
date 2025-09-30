@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
+import PrimaryButton from "../components/custom/PrimaryButton";
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -78,8 +79,8 @@ const Login = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity
-          style={styles.loginButton}
+        <PrimaryButton
+          title="Log In"
           onPress={() => {
             if (email.trim() && password.trim()) {
               navigation.navigate("Tabs");
@@ -87,9 +88,7 @@ const Login = () => {
               alert("Please enter email and password");
             }
           }}
-        >
-          <CustomText style={styles.loginText}>Log In</CustomText>
-        </TouchableOpacity>
+        />
 
         <View style={styles.dividerContainer}>
           <View style={styles.line} />
@@ -144,6 +143,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 40,
     marginBottom: 8,
+    color: "#181818",
+    fontFamily: "Poppins_600SemiBold",
   },
   content: {
     flex: 1,
@@ -155,6 +156,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 30,
     fontWeight: "500",
+    fontFamily: "Poppins-500Medium",
   },
 
   inputContainer: {
@@ -167,7 +169,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 16,
   },
-  input: { flex: 1, marginLeft: 8, fontSize: 14, color: "#000" },
+  input: {
+    flex: 1,
+    marginLeft: 8,
+    fontSize: 14,
+    fontWeight: "500",
+    fontFamily: "Poppins-500Medium",
+    color: "#000",
+  },
 
   row: {
     flexDirection: "row",
@@ -175,23 +184,32 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 20,
   },
-  checkboxContainer: { flexDirection: "row", alignItems: "center" },
-  checkboxText: { marginLeft: 6, fontSize: 13, color: "#555" },
-  link: { color: "#4F6DFF", fontWeight: "600", fontSize: 13 },
-
-  loginButton: {
-    backgroundColor: "#4F6DFF",
-    paddingVertical: 16,
-    borderRadius: 30,
+  checkboxContainer: {
+    flexDirection: "row",
     alignItems: "center",
-    marginBottom: 24,
+    marginBottom: 20,
+    marginTop: 24,
   },
-  loginText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  checkboxText: {
+    marginLeft: 6,
+    fontSize: 12,
+    color: "#000000",
+    fontWeight: "500",
+    fontFamily: "Poppins-500Medium",
+  },
+  link: {
+    color: "#4B75E9",
+    fontWeight: "700",
+    fontSize: 13,
+    textDecorationLine: "underline",
+    fontFamily: "Poppins_700Bold",
+  },
 
   dividerContainer: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 24,
+    marginTop: 24,
   },
   line: { flex: 1, height: 1, backgroundColor: "#ddd" },
   orText: { marginHorizontal: 8, color: "#888", fontSize: 12 },
@@ -210,14 +228,26 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
   },
-  socialText: { marginLeft: 8, fontSize: 14, color: "#333" },
+  socialText: {
+    marginLeft: 8,
+    fontSize: 12,
+    color: "#333",
+    fontWeight: "700",
+    fontFamily: "Poppins_700Bold",
+  },
 
   signupText: {
     fontSize: 14,
+    color: "#181818",
+    fontWeight: "500",
     textAlign: "center",
-    color: "#000",
-    marginBottom: 20,
-    fontWeight: "600",
+    marginBottom: 10,
+    fontFamily: "Poppins-500Medium",
   },
-  signupLink: { color: "#4F6DFF", fontWeight: "700" },
+  signupLink: {
+    color: "#4F6DFF",
+    fontWeight: "700",
+
+    fontFamily: "Poppins_700Bold",
+  },
 });

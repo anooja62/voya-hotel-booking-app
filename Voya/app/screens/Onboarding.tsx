@@ -11,6 +11,7 @@ import { CustomText } from "../components/custom/CustomText";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
+import { Ionicons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
 
@@ -69,6 +70,25 @@ export default function OnboardingCarousel() {
     }, 2000);
     return () => clearInterval(timer);
   }, [index]);
+  useEffect(() => {
+    if (index === slides.length - 1) {
+      // On last slide → navigate after 2s
+      const timer = setTimeout(() => {
+        navigation.replace("Home");
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    } else {
+      // Auto-slide to next
+      const timer = setInterval(() => {
+        const next = index + 1;
+        flatRef.current?.scrollToIndex({ index: next, animated: true });
+        setIndex(next);
+      }, 2000);
+
+      return () => clearInterval(timer);
+    }
+  }, [index, navigation]);
 
   const handleMomentumEnd = (e: any) => {
     const newIndex = Math.round(e.nativeEvent.contentOffset.x / width);
@@ -139,7 +159,7 @@ export default function OnboardingCarousel() {
         </View>
 
         <TouchableOpacity style={styles.nextBtn} onPress={handleNext}>
-          <CustomText style={styles.nextArrow}>→</CustomText>
+          <Ionicons name="arrow-forward" size={20} color="#fff" />
         </TouchableOpacity>
       </View>
     </View>
@@ -172,15 +192,18 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     color: "#000",
+    fontFamily: "Poppins-600SemiBold",
     alignItems: "center",
     marginBottom: 10,
+    lineHeight: 27,
   },
   description: {
     fontSize: 15,
     textAlign: "center",
     color: "#A2A5AD",
-    lineHeight: 20,
+    lineHeight: 27,
     fontWeight: "500",
+    fontFamily: "Poppins-500Medium",
   },
   bottomRow: {
     flexDirection: "row",
