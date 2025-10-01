@@ -113,7 +113,7 @@ const Receipt = () => {
             <View style={styles.actions}>
               <TouchableOpacity
                 style={[styles.btn, styles.backBtn]}
-                onPress={() => navigation.navigate("Search")}
+                onPress={() => navigation.navigate("Tabs")}
               >
                 <CustomText style={styles.backText}>Back to Home</CustomText>
               </TouchableOpacity>
