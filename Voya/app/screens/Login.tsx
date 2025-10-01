@@ -41,6 +41,7 @@ const Login = () => {
         navigation.navigate("Tabs");
       })
       .catch((err) => {
+        console.log("✌️err --->", err);
         Alert.alert("Login Failed", err || "Invalid email or password");
       });
   };

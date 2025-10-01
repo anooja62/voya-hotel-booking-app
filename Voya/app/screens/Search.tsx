@@ -106,7 +106,7 @@ const Search = () => {
 
         {/* Button */}
         <PrimaryButton
-          title="Search"
+          title="Find Hotel"
           onPress={() => navigation.navigate("HotelsListing")}
         />
       </View>
