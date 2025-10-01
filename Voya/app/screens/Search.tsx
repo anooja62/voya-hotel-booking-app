@@ -113,7 +113,7 @@ const Search = () => {
 
       {/* Popular Hotels */}
       <View style={styles.popularHeader}>
-        <CustomText style={styles.sectionTitle}>Popular Hotel</CustomText>
+        <CustomText style={styles.sectionTitle}>Popular Hotels</CustomText>
         <CustomText
           style={styles.link}
           onPress={() => navigation.navigate("HotelsListing")}

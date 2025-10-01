@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // eslint-disable-next-line import/no-unresolved
-import { API_URL } from "@env";
-//const API_URL = "http://192.168.1.20:8000";
+//import { API_URL } from "@env";
+const API_URL = "http://192.168.1.20:8000";
 
 console.log("✌️API_URL --->", API_URL);
 type User = {
