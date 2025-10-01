@@ -8,7 +8,8 @@ import {
   Poppins_500Medium,
 } from "@expo-google-fonts/poppins";
 import StackNavigator from "./navigation/StackNavigator";
-
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -20,8 +21,12 @@ export default function RootLayout() {
   console.log("loading fonts...", fontsLoaded);
 
   if (!fontsLoaded) {
-    return null; // or <AppLoading /> if using splash screen
+    return null;
   }
 
-  return <StackNavigator />;
+  return (
+    <Provider store={store}>
+      <StackNavigator />
+    </Provider>
+  );
 }

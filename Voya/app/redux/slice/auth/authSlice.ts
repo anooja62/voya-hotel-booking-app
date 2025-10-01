@@ -35,6 +35,7 @@ export const registerUser = createAsyncThunk(
       });
 
       const data = await res.json();
+      console.log("✌️data --->", data);
       if (!res.ok) throw new Error(data.message || "Register failed");
 
       return data.user;

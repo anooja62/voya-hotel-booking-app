@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import {
   View,
   StyleSheet,
@@ -7,6 +8,10 @@ import {
   Pressable,
   Image,
 } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "../redux/store";
+
+import { registerUser } from "../redux/slice/auth/authSlice";
 import { Ionicons } from "@expo/vector-icons";
 import { Checkbox } from "expo-checkbox";
 import { useNavigation } from "@react-navigation/native";
@@ -21,6 +26,19 @@ const SignUp = () => {
   const [isChecked, setChecked] = useState(false);
   type SignUpProp = NativeStackNavigationProp<RootStackParamList, "Signup">;
   const navigation = useNavigation<SignUpProp>();
+  const [username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch<AppDispatch>();
+  const { loading, error, user } = useSelector(
+    (state: RootState) => state.auth
+  );
+  useEffect(() => {
+    if (user) {
+      navigation.navigate("Login");
+    }
+  }, [user, navigation]);
+
   return (
     <View style={styles.container}>
       {/* Top content centered */}
@@ -43,6 +61,8 @@ const SignUp = () => {
           <TextInput
             placeholder="Enter Full name"
             style={styles.input}
+            value={username}
+            onChangeText={setUserName}
             placeholderTextColor={Theme.gray}
           />
         </View>
@@ -53,6 +73,8 @@ const SignUp = () => {
             placeholder="Enter email address"
             keyboardType="email-address"
             style={styles.input}
+            value={email}
+            onChangeText={setEmail}
             placeholderTextColor={Theme.gray}
           />
         </View>
@@ -63,6 +85,8 @@ const SignUp = () => {
             placeholder="Create Password"
             secureTextEntry={!passwordVisible}
             style={styles.input}
+            value={password}
+            onChangeText={setPassword}
             placeholderTextColor={Theme.gray}
           />
           <Pressable onPress={() => setPasswordVisible(!passwordVisible)}>
@@ -86,7 +110,17 @@ const SignUp = () => {
             and <CustomText style={styles.link}>Privacy Policy</CustomText>
           </CustomText>
         </View>
-        <PrimaryButton title="Register" onPress={() => {}} />
+        <PrimaryButton
+          title={loading ? "Registering..." : "Register"}
+          onPress={() => {
+            dispatch(registerUser({ username, email, password }));
+          }}
+        />
+        {error && (
+          <CustomText style={{ color: "red", textAlign: "center" }}>
+            {error}
+          </CustomText>
+        )}
 
         {/* Divider */}
         <View style={styles.dividerContainer}>
