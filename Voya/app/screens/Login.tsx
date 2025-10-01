@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Pressable,
   Image,
+  Alert,
 } from "react-native";
 import { Theme } from "../constants/theme";
 import { Ionicons } from "@expo/vector-icons";
@@ -15,6 +16,9 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/StackNavigator";
 import { CustomText } from "../components/custom/CustomText";
 import PrimaryButton from "../components/custom/PrimaryButton";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../redux/slice/auth/authSlice";
+import type { RootState, AppDispatch } from "../redux/store";
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -22,6 +26,25 @@ const Login = () => {
   const [password, setPassword] = useState("");
   type LoginProp = NativeStackNavigationProp<RootStackParamList, "Login">;
   const navigation = useNavigation<LoginProp>();
+  const dispatch = useDispatch<AppDispatch>();
+  const { loading } = useSelector((state: RootState) => state.auth);
+  const handleLogin = () => {
+    if (!email.trim() || !password.trim()) {
+      Alert.alert("Error", "Please enter email and password");
+      return;
+    }
+    dispatch(loginUser({ email, password }))
+      .unwrap()
+      .then(() => {
+        setEmail("");
+        setPassword("");
+        navigation.navigate("Tabs");
+      })
+      .catch((err) => {
+        Alert.alert("Login Failed", err || "Invalid email or password");
+      });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -81,14 +104,8 @@ const Login = () => {
         </View>
 
         <PrimaryButton
-          title="Log In"
-          onPress={() => {
-            if (email.trim() && password.trim()) {
-              navigation.navigate("Tabs");
-            } else {
-              alert("Please enter email and password");
-            }
-          }}
+          title={loading ? "Logging in..." : "Log In"}
+          onPress={handleLogin}
         />
 
         <View style={styles.dividerContainer}>

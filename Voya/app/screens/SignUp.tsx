@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   View,
@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Pressable,
   Image,
+  Alert,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../redux/store";
@@ -30,14 +31,34 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
-  const { loading, error, user } = useSelector(
-    (state: RootState) => state.auth
-  );
-  useEffect(() => {
-    if (user) {
-      navigation.navigate("Login");
+  const { loading, error } = useSelector((state: RootState) => state.auth);
+  const handleRegister = () => {
+    if (!username.trim() || !email.trim() || !password.trim()) {
+      Alert.alert("Error", "Please fill all fields");
+      return;
     }
-  }, [user, navigation]);
+
+    if (!isChecked) {
+      Alert.alert("Error", "Please agree to the Terms and Privacy Policy");
+      return;
+    }
+
+    dispatch(registerUser({ username, email, password }))
+      .unwrap()
+      .then(() => {
+        // Clear fields after success
+        setUserName("");
+        setEmail("");
+        setPassword("");
+        setChecked(false);
+
+        // Navigate to Login
+        navigation.navigate("Login");
+      })
+      .catch((err) => {
+        Alert.alert("Registration Failed", err || "Something went wrong");
+      });
+  };
 
   return (
     <View style={styles.container}>
@@ -112,9 +133,7 @@ const SignUp = () => {
         </View>
         <PrimaryButton
           title={loading ? "Registering..." : "Register"}
-          onPress={() => {
-            dispatch(registerUser({ username, email, password }));
-          }}
+          onPress={handleRegister}
         />
         {error && (
           <CustomText style={{ color: "red", textAlign: "center" }}>
